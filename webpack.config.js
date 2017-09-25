@@ -21,8 +21,7 @@ var config = {
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
-        test: /\.scss$/,
-        exclude: /node_modules/,
+        test: /\.scss$/, exclude: /node_modules/,
         use: [
           {
             loader: "style-loader"
