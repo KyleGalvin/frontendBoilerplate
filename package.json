@@ -20,8 +20,14 @@
   "homepage": "https://github.com/darkdigitaldream/portfolio#readme",
   "devDependencies": {
     "awesome-typescript-loader": "3.2.3",
+    "css-loader": "^0.28.7",
+    "http-server": "^0.10.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
     "source-map-loader": "0.2.1",
+    "style-loader": "^0.18.2",
     "typescript": "2.5.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "3.6.0"
   },
   "dependencies": {
