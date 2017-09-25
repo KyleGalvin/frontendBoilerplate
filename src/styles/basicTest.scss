@@ -17,3 +17,11 @@ $primary-color: hotpink;
 .my-other-element {
   @include border-radius(5px);
 }
+
+.personalSummaryContainer {
+	background: grey;
+}
+
+.mainContentContainer {
+	background: $primary-color;
+}

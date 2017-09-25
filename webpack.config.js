@@ -19,6 +19,11 @@ var config = {
   module: {
     loaders: [
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+        include: /flexboxgrid/
+      },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.scss$/, exclude: /node_modules/,
@@ -37,7 +42,7 @@ var config = {
     ]
   },
   plugins: [
-    new UglifyJSPlugin({ output: {comments: false} })
+    new UglifyJSPlugin({ output: {comments: false}})
   ]
 };
 
