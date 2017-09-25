@@ -1,9 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Hello } from "./components/Hello";
+import { MainPanel } from "./components/mainPanel";
+import { PersonalSummary } from "./components/personalSummary";
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <div>
+      <PersonalSummary />
+      <MainPanel />
+    </div>,
     document.getElementById("reactContainer")
 );
