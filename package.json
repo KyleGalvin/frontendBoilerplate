@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "version": "0.0.0",
+  "description": "basic portfolio page",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darkdigitaldream/portfolio.git"
+  },
+  "author": "Kyle Galvin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darkdigitaldream/portfolio/issues"
+  },
+  "homepage": "https://github.com/darkdigitaldream/portfolio#readme"
+}
