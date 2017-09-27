@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { setData } from "../actions/actions";
 import * as Store from "../reducers/reducer";
 import * as Config from "../config/confManager";
+import Log from "../utils/log";
 
 interface IProps {}
 
@@ -22,7 +23,7 @@ const mapStateToProps = (state: Store.IAppState, props: IProps): IConnectedState
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): IConnectedDispatch => ({
   gotData: (state: Store.IAppState) => {
-    console.log("got data: ", state);
+    Log.info("got data: ", state);
     dispatch(setData(state));
   },
 });

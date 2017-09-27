@@ -41,6 +41,9 @@ var config = {
       }
     ]
   },
+  node: {
+    fs: "empty"
+  },
   // plugins: [
   //   new UglifyJSPlugin({ output: {comments: false}})
   // ]
