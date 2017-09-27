@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "bundle": "webpack",
-    "serve": "webpack && http-server -i index.html"
+    "serve": "webpack && cp -r ./src/data ./dist/ && http-server -i index.html"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/darkdigitaldream/portfolio#readme",
   "devDependencies": {
+    "@types/es6-promise": "0.0.33",
+    "@types/react": "16.0.5",
+    "@types/react-dom": "15.5.4",
+    "@types/react-redux": "5.0.9",
     "awesome-typescript-loader": "3.2.3",
     "css-loader": "0.28.7",
     "http-server": "0.10.0",
@@ -31,12 +35,11 @@
     "webpack": "3.6.0"
   },
   "dependencies": {
-    "@types/react": "16.0.5",
-    "@types/react-dom": "15.5.4",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-flexbox-grid": "1.1.5",
     "react-redux": "5.0.6",
-    "redux": "3.7.2"
+    "redux": "3.7.2",
+    "redux-thunk": "^2.2.0"
   }
 }

@@ -1,0 +1,7 @@
+{
+  user: {
+    firstName: 'John',
+    lastName: 'Doe',
+    avatar: 'http://localhost:8080/dist/data/avatar.jpg'
+  }
+}
