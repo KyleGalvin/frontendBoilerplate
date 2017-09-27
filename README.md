@@ -23,6 +23,8 @@ I am by no means a frontend / UI expert, so this project is geared to help me le
 
 I intend to add a unit test suite soon
 
+I currently have no idea what redux-thunk is. It was simply used in a guide and things didn't work without it
+
 Maybe sometime soon I'll have a matching backend boilerplate project to contribute as well, although there are fewer moving parts to choose from. It is likely there are already example projects out there using typescript, express, and whatever database solution fits the immediate need.
 
 ## To install this project:

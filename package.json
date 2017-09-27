@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "frontendBoilerplate",
   "version": "0.0.0",
-  "description": "basic portfolio page",
+  "description": "basic blank project setup. Hopefully saves you time configuring",
   "main": "index.js",
   "scripts": {
     "test": "test",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darkdigitaldream/portfolio.git"
+    "url": "git+https://github.com/darkdigitaldream/frontendBoilerplate.git"
   },
   "author": "Kyle Galvin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/darkdigitaldream/portfolio/issues"
+    "url": "https://github.com/darkdigitaldream/frontendBoilerplate/issues"
   },
-  "homepage": "https://github.com/darkdigitaldream/portfolio#readme",
+  "homepage": "https://github.com/darkdigitaldream/frontendBoilerplate#readme",
   "devDependencies": {
     "@types/es6-promise": "0.0.33",
     "@types/react": "16.0.5",
