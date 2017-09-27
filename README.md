@@ -1,9 +1,10 @@
+## Purpose:
+
 There are many 'boilerplate' starter projects out there, however I have not yet found one that uses all the parts of my preferred stack. This project is meant to fill that void.
 
-Here we have a simple front end project that includes the following:
+## Tooling: 
 
-Typescript
-
+* Typescript
 * React
 * React-redux
 * webpack
@@ -11,10 +12,12 @@ Typescript
 * sass
 * fetch wrappers (for restful API calls)
 
+## Developer Notes:
+
 previously I had used a custom flux model. This is my first dive into react-redux, and I learned most of what I know from the following guide (and supplimentary example project)
 
-https://rjzaworski.com/2016/08/typescript-redux-and-react
-https://github.com/rjz/typescript-react-redux
+* https://rjzaworski.com/2016/08/typescript-redux-and-react
+* https://github.com/rjz/typescript-react-redux
 
 I am by no means a frontend / UI expert, so this project is geared to help me learn responsive design patterns with flexbox and sass.
 
