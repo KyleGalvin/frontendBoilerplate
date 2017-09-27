@@ -41,9 +41,9 @@ var config = {
       }
     ]
   },
-  plugins: [
-    new UglifyJSPlugin({ output: {comments: false}})
-  ]
+  // plugins: [
+  //   new UglifyJSPlugin({ output: {comments: false}})
+  // ]
 };
 
 module.exports = config;

@@ -1,39 +1,42 @@
 import * as React from "react";
-import * as redux from 'redux';
-import { connect } from 'react-redux';
+import * as redux from "redux";
+import { connect } from "react-redux";
 
-import { setData } from '../actions/actions';
-import * as Store from '../reducers/reducer';
+import { setData } from "../actions/actions";
+import * as Store from "../reducers/reducer";
 import * as Config from "../config/confManager";
 
-interface IProps {};
+interface IProps {}
 
-interface IState {};
+interface IState {
+  user: IUser;
+}
 
-interface IConnectedState {};
+interface IConnectedState {}
 
-interface IConnectedDispatch {};
+interface IConnectedDispatch {}
 
-const mapStateToProps = (state: Store.IAppState, mainPanelProps: IProps): IConnectedState => ({
+const mapStateToProps = (state: Store.IAppState, props: IProps): IConnectedState => ({
   // counter: state.counter,
-})
+});
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): IConnectedDispatch => ({
   gotData: (state: Store.IAppState) => {
-    dispatch(setData(state))
+    console.log("got data: ", state);
+    dispatch(setData(state));
   },
-})
+});
 
 class Component extends React.Component<IProps, IState> {
-  render() {
+  public render() {
     return (
       <div>
         <div>Image</div>
-        <img src={ Config.default.modelServer + '/dist/data/avatar.jpg'} />
+        <img src={""} />
         <div>Content</div>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component)
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

@@ -11,6 +11,7 @@ There are many 'boilerplate' starter projects out there, however I have not yet 
 * react-flexbox-grid (grid based layouts)
 * sass
 * fetch wrappers (for restful API calls)
+* tslint (with a few rules modified from the defaults)
 
 ## Developer Notes:
 

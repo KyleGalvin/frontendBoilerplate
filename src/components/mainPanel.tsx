@@ -1,29 +1,29 @@
 import * as React from "react";
-import * as redux from 'redux';
-import { connect } from 'react-redux';
+import * as redux from "redux";
+import { connect } from "react-redux";
 
-import * as Store from '../reducers/reducer';
+import * as Store from "../reducers/reducer";
 
-interface IProps {};
+interface IProps {}
 
-interface IState {};
+interface IState {}
 
-interface IConnectedState {};
+interface IConnectedState {}
 
-interface IConnectedDispatch {};
+interface IConnectedDispatch {}
 
 const mapStateToProps = (state: Store.IAppState, mainPanelProps: IProps): IConnectedState => ({
   // counter: state.counter,
-})
+});
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): IConnectedDispatch => ({
   // gotData: (state: Store.IAppState) => {
   //   dispatch(setData(state))
   // },
-})
+});
 
 class Component extends React.Component<IConnectedState & IConnectedDispatch & IProps, IState> {
-  render() {
+  public render() {
     return (<div>Main Panel</div>);
   }
 }
