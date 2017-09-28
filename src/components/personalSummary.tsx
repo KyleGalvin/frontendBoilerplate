@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as Store from "../reducers/reducer";
 import * as Config from "../config/confManager";
 import { getData } from "../services/server";
-//import Log from "../utils/log";
+// import Log from "../utils/log";
 
 interface IProps {}
 
@@ -14,26 +14,19 @@ interface IState {
 }
 
 interface IConnectedState {
-  user: IUser
+  user: IUser;
 }
 
 interface IConnectedDispatch {
-  get: () => void
+  get: () => void;
 }
 
-const mapStateToProps = (state: Store.IAppState, props: IProps): IConnectedState => 
-{
-  console.log('mapStateToProps: ', state, JSON.parse(JSON.stringify(state)), props);
-
-  return {
-    user: state.user
-  }
-  
-};
+const mapStateToProps = (state: Store.IAppState, props: IProps): IConnectedState => ({
+  user: state.user
+});
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): IConnectedDispatch => ({
   get: () => {
-    console.log("personalSummary dispatching get");
     dispatch(getData());
   },
 });
@@ -44,7 +37,6 @@ class Component extends React.Component<IConnectedState & IConnectedDispatch & I
   }
 
   public render() {
-    
     const { user } = this.props;
     return (
       <div>
