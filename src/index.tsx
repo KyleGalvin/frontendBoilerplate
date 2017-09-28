@@ -9,7 +9,6 @@ import MainPanel from "./components/mainPanel";
 import PersonalSummary from "./components/personalSummary";
 import * as Config from "./config/confManager";
 import * as Store from "./reducers/reducer";
-import { setData } from "./actions/actions";
 import * as ServerService from "./services/server";
 
 import "./styles/basicTest.scss";

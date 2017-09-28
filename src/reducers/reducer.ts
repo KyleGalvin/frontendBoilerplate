@@ -5,25 +5,24 @@ export interface IAppState {
   user: IUser
 }
 
-const initialState: IAppState = {
-  user: {
-    firstName: "",
-    lastName: "",
-    avatar: ""
-  },
+const initialState: IUser = {
+  firstName: "",
+  lastName: "",
+  avatar: ""
 }
 
-function apiUpdate (state: IAppState = initialState, action: Action): IAppState {
-  console.log('reducer hit');
+function user (state: IUser = initialState, action: Action): IUser {
+  console.log('reducer hit: ', action);
   switch (action.type) {
     case 'GET_MODEL':
-      console.log('reducer GET_MODEL ', action);
-      return action.state;
+      console.log('reducer GET_MODEL ', action, state);
+      return action.user;
     default:
+    console.log('reducer default ', state);
       return state;
   }
 }
 
 export const reducers = combineReducers<IAppState>({
-  apiUpdate,
+  user
 });
