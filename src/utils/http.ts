@@ -5,6 +5,6 @@ export const get = (url: string): Promise<any> => {
   }).then((response: string) => {
       console.log('response: ', response);
       let jsonResponse = JSON.parse(response);
-      dispatch(setData(jsonResponse));
+      return jsonResponse;
   });
 };

@@ -12,10 +12,10 @@ type apiFunc<Q, S> = (q: Q) => Promise<S>
 //actions
 export type Action =
 // API Requests
-   { type: 'GOT_DATA', state: IAppState }
+   { type: 'GET_MODEL', state: IAppState }
 
 export const setData = (state: IAppState): Action => ({
-  type: 'GOT_DATA',
+  type: 'GET_MODEL',
   state
 })
 
@@ -25,13 +25,13 @@ export type ApiActionGroup<_Q, _S> = {
   error: (e: Error, q?: _Q) => Action & Q<_Q> & E
 }
 
-function apiActionGroupFactory<Q, S>(x: ApiActionGroup<Q, S>, go: apiFunc<Q, S>) {
-  return (request: Q) => (dispatch: redux.Dispatch<State.IAppState>) => {
-    dispatch(x.request(request))
-    go(request)
-      .then((response) => dispatch(x.success(response, request)))
-      .catch((e: Error) => dispatch(x.error(e, request)))
-  }
-}
+// function apiActionGroupFactory<Q, S>(x: ApiActionGroup<Q, S>, go: apiFunc<Q, S>) {
+//   return (request: Q) => (dispatch: redux.Dispatch<State.IAppState>) => {
+//     dispatch(x.request(request))
+//     go(request)
+//       .then((response) => dispatch(x.success(response, request)))
+//       .catch((e: Error) => dispatch(x.error(e, request)))
+//   }
+// }
 
-export const saveCount = apiActionGroupFactory(_saveCount, api.save)
+// export const saveCount = apiActionGroupFactory(_saveCount, api.save)

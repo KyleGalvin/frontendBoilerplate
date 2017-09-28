@@ -7,14 +7,17 @@ export interface IAppState {
 
 const initialState: IAppState = {
   user: {
-    firstName: '',
-    lastName: ''
+    firstName: "",
+    lastName: "",
+    avatar: ""
   },
 }
 
 function apiUpdate (state: IAppState = initialState, action: Action): IAppState {
+  console.log('reducer hit');
   switch (action.type) {
-    case 'GOT_DATA':
+    case 'GET_MODEL':
+      console.log('reducer GET_MODEL ', action);
       return action.state;
     default:
       return state;
