@@ -21,12 +21,12 @@ interface IConnectedDispatch {
   get: () => void
 }
 
-const mapStateToProps = (state: IUser, props: IProps): IConnectedState => 
+const mapStateToProps = (state: Store.IAppState, props: IProps): IConnectedState => 
 {
   console.log('mapStateToProps: ', state, JSON.parse(JSON.stringify(state)), props);
 
   return {
-    user: state
+    user: state.user
   }
   
 };
@@ -45,9 +45,7 @@ class Component extends React.Component<IConnectedState & IConnectedDispatch & I
 
   public render() {
     
-    const { user } = JSON.parse(JSON.stringify(this.props.user));
-    const avatar = user.avatar;
-    console.log('summary render', JSON.parse(JSON.stringify(user)), typeof(user), Object.keys(user), JSON.stringify(avatar), user.firstName);
+    const { user } = this.props;
     return (
       <div>
         <div>{user.firstName} {user.lastName}</div>
