@@ -8,7 +8,8 @@ import * as Store from "../reducers/reducer";
 
 export const getData = () => {
   return (dispatch: redux.Dispatch<Store.IAppState>) => {
-    http.get(Config.default.modelServer + '/dist/data/testModel.json')
+    // http.get(Config.default.modelServer + '/dist/data/testModel.json')
+    http.get("http://localhost:3000/")
     .then((response: Store.IAppState) => {
       console.log("dispatching data: ", response);
       dispatch({

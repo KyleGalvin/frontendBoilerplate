@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "bundle": "webpack",
+    "bundle": "webpack && npm run assetBundle",
     "assetBundle": "cp -r ./src/data ./dist/",
     "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
-    "serve": "npm run lint && npm run bundle && npm run assetBundle && cat ./tslint.err && http-server -i index.html"
+    "serve": "npm run lint && npm run bundle && cat ./tslint.err && http-server -i index.html"
   },
   "repository": {
     "type": "git",
