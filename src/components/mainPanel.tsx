@@ -3,6 +3,7 @@ import * as redux from "redux";
 import { connect } from "react-redux";
 
 import * as Store from "../reducers/reducer";
+import SignUp from "./signUp";
 
 interface IProps {}
 
@@ -24,7 +25,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): IConnect
 
 class Component extends React.Component<IConnectedState & IConnectedDispatch & IProps, IState> {
   public render() {
-    return (<div>Main Panel</div>);
+    return (<div>Main Panel <SignUp /></div>);
   }
 }
 
