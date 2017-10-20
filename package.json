@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "bundle": "webpack && npm run assetBundle",
+    "bundle": "webpack && npm run assetBundle && cp ./index.html ./dist",
     "assetBundle": "cp -r ./src/data ./dist/",
     "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
-    "serve": "npm run lint && npm run bundle && cat ./tslint.err && http-server -i index.html"
+    "serve": "npm run lint && npm run bundle && cat ./tslint.err && http-server -i index.html",
+    "serve-dev": "npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,8 @@
     "tslint": "5.7.0",
     "typescript": "2.5.2",
     "uglifyjs-webpack-plugin": "0.4.6",
-    "webpack": "3.6.0"
+    "webpack": "3.6.0",
+    "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
     "react": "15.6.1",

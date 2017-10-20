@@ -7,7 +7,7 @@ import * as Config from "../config/confManager";
 import { getData } from "../services/server";
 // import Log from "../utils/log";
 
-interface IProps {}
+// interface IProps {}
 
 interface IState {
   user: IUser;
@@ -21,7 +21,7 @@ interface IConnectedDispatch {
   get: () => void;
 }
 
-const mapStateToProps = (state: Store.IAppState, props: IProps): IConnectedState => ({
+const mapStateToProps = (state: Store.IAppState, props: {}): IConnectedState => ({
   user: state.user
 });
 
@@ -31,8 +31,8 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): IConnect
   },
 });
 
-class Component extends React.Component<IConnectedState & IConnectedDispatch & IProps, IState> {
-  constructor(props: IConnectedState & IConnectedDispatch & IProps) {
+class Component extends React.Component<IConnectedState & IConnectedDispatch, IState> {
+  constructor(props: IConnectedState & IConnectedDispatch) {
     super(props);
   }
 

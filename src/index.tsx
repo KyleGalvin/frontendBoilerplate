@@ -7,6 +7,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 
 import MainPanel from "./components/mainPanel";
 import PersonalSummary from "./components/personalSummary";
+import Contacts from "./components/contacts";
 import * as Config from "./config/confManager";
 import * as Store from "./reducers/reducer";
 import * as ServerService from "./services/server";
@@ -31,6 +32,7 @@ ReactDOM.render(
       <Row center="xs" start="md">
         <Col xs={12} md={4} className="personalSummaryContainer">
           <PersonalSummary />
+          <Contacts />
         </Col>
         <Col xs={12} md={8} className="mainContentContainer">
           <MainPanel />
