@@ -1,3 +1,4 @@
 export default {
-  modelServer: 'http://localhost:8080'
+  testDataRoot: 'http://localhost:8080/testData',
+  modelServer: 'http://localhost:3000'
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "bundle": "webpack && npm run assetBundle && cp ./index.html ./dist",
-    "assetBundle": "cp -r ./src/data ./dist/",
+    "assetBundle": "cp -r ./src/testData ./dist/",
     "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
     "serve": "npm run lint && npm run bundle && cat ./tslint.err && http-server -i index.html",
     "serve-dev": "npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js"

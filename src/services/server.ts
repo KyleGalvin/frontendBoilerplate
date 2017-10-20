@@ -8,14 +8,21 @@ import * as Store from "../reducers/reducer";
 
 export const getData = () => {
   return (dispatch: redux.Dispatch<Store.IAppState>) => {
-    // http.get(Config.default.modelServer + '/dist/data/testModel.json')
-    http.get("http://localhost:3000/")
+    // http.get(Config.default.testDataRoot + '/dist/testData/testModel.json')
+    http.get(Config.default.modelServer)
     .then((response: Store.IAppState) => {
       console.log("dispatching data: ", response);
+      if(!response){
+        return Promise.reject("No response returned from server");
+      }
+
       dispatch({
         type: Actions.GET_MODEL,
         user: response.user
       });
+    })
+    .catch((err: any) => {
+      console.log("Error getting data: ", err);
     })
   }
 }
