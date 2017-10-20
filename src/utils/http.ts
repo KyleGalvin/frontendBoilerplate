@@ -1,3 +1,5 @@
+import Winston from "../utils/winston";
+
 export const get = (url: string): Promise<any> => {
 
   var myHeaders = new Headers();
@@ -15,15 +17,19 @@ export const get = (url: string): Promise<any> => {
   var request = new Request(url, requestConfig);
 
   return fetch(request).then((response) => {
-    console.log("response",response);
+    Winston.info("response",response);
+    if(!response.ok) {
+      throw Error(response.statusText);
+    }
     return response.json()
   })    
   .then((response: any) => {
-    console.log('response: ', response);
+    Winston.info('response: ', response);
     return response;
   })
-  .catch((err) => {
-    console.log('error: ', err);
+  .catch((err: any) => {
+    Winston.info('fetch error: ', err);
+    return null;
   });
 
 };
@@ -46,15 +52,15 @@ export const post = (url: string, body: any): Promise<any> => {
   var request = new Request(url, requestConfig);
 
   return fetch(request).then((response) => {
-    console.log("response",response);
+    Winston.info("response",response);
     return response.json()
   })    
   .then((response: any) => {
-    console.log('response: ', response);
+    Winston.info('response: ', response);
     return response;
   })
-  .catch((err) => {
-    console.log('error: ', err);
+  .catch((err: any) => {
+    Winston.info('error: ', err);
   });
 
 };

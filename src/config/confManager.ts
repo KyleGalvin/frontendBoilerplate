@@ -1,4 +1,5 @@
 export default {
   testDataRoot: 'http://localhost:8080/testData',
-  modelServer: 'http://localhost:3000'
+  modelServer: 'https://localhost:3000',
+  logLevel: 'info'
 }

@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import {Action } from "../actions/actions";
+import Winston from "../utils/winston";
 
 export interface IAppState {
   user: IUser
@@ -12,13 +13,13 @@ const initialState: IUser = {
 }
 
 function user (state: IUser = initialState, action: Action): IUser {
-  console.log('reducer hit: ', action);
+  Winston.info('reducer hit: ', action);
   switch (action.type) {
     case 'GET_MODEL':
-      console.log('reducer GET_MODEL ', action, state);
+      Winston.info('reducer GET_MODEL ', action, state);
       return action.user;
     default:
-    console.log('reducer default ', state);
+    Winston.info('reducer default ', state);
       return state;
   }
 }

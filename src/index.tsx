@@ -8,7 +8,6 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import MainPanel from "./components/mainPanel";
 import PersonalSummary from "./components/personalSummary";
 import Contacts from "./components/contacts";
-import * as Config from "./config/confManager";
 import * as Store from "./reducers/reducer";
 import * as ServerService from "./services/server";
 

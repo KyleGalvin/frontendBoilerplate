@@ -2,18 +2,20 @@ import * as redux from "redux";
 
 import * as http from "../utils/http";
 // import Log from "../utils/log";
-import * as Config from "../config/confManager";
+import Config from "../config/confManager";
 import Actions from "../constants/actions";
 import * as Store from "../reducers/reducer";
+import Winston from "../utils/winston";
 
 export const getData = () => {
   return (dispatch: redux.Dispatch<Store.IAppState>) => {
-    // http.get(Config.default.testDataRoot + '/dist/testData/testModel.json')
-    http.get(Config.default.modelServer)
+    // http.get(Config.testDataRoot + '/dist/testData/testModel.json')
+    http.get(Config.modelServer)
     .then((response: Store.IAppState) => {
-      console.log("dispatching data: ", response);
+      Winston.info("dispatching data: ", response);
+      Winston.info('winston: ', Winston);
       if(!response){
-        return Promise.reject("No response returned from server");
+        throw Error("No response returned from server");
       }
 
       dispatch({
@@ -22,7 +24,7 @@ export const getData = () => {
       });
     })
     .catch((err: any) => {
-      console.log("Error getting data: ", err);
+      Winston.error("Error getting data: ", err);
     })
   }
 }
