@@ -8,8 +8,7 @@
     "bundle": "webpack && npm run assetBundle && cp ./index.html ./dist",
     "assetBundle": "cp -r ./src/testData ./dist/",
     "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
-    "serve": "npm run lint && npm run bundle && cat ./tslint.err && http-server -i index.html",
-    "serve-dev": "npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js"
+    "serve": "npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -29,7 +28,6 @@
     "@types/winston": "2.3.6",
     "awesome-typescript-loader": "3.2.3",
     "css-loader": "0.28.7",
-    "http-server": "0.10.0",
     "node-sass": "4.5.3",
     "sass-loader": "6.0.6",
     "source-map-loader": "0.2.1",
