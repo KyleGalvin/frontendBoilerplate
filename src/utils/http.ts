@@ -2,7 +2,7 @@ import * as path from "path";
 
 import Logger from "../utils/logger";
 
-const logger = Logger(path.basename(__filename));
+const logger = Logger(path.normalize(path.basename(__filename)));
 
 export const get = (url: string): Promise<any> => {
 

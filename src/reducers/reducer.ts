@@ -4,7 +4,7 @@ import { combineReducers } from "redux";
 import {Action } from "../actions/actions";
 import Logger from "../utils/logger";
 
-const logger = Logger(path.basename(__filename));
+const logger = Logger(path.normalize(path.basename(__filename)));
 
 export interface IAppState {
   user: IUser
@@ -17,13 +17,13 @@ const initialState: IUser = {
 }
 
 function user (state: IUser = initialState, action: Action): IUser {
-  logger.info('reducer hit: ', action);
+  logger.info({obj:action}, 'reducer hit:');
   switch (action.type) {
     case 'GET_MODEL':
-      logger.info('reducer GET_MODEL ', action, state);
+      logger.info({obj:{action: action, state: state}}, 'reducer GET_MODEL ');
       return action.user;
     default:
-    logger.info('reducer default ', state);
+    logger.info({obj:state}, 'reducer default ');
       return state;
   }
 }

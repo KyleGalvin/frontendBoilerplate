@@ -7,7 +7,7 @@ import Actions from "../constants/actions";
 import * as Store from "../reducers/reducer";
 import Logger from "../utils/logger";
 
-const logger = Logger(path.basename(__filename));
+const logger = Logger(path.normalize(path.basename(__filename)));
 console.log('server.ts creating logger: ', __filename);
 
 export const getData = () => {
