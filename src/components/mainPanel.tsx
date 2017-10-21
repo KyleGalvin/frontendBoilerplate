@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): {} => ({
 class Component extends React.Component<{}, {}> {
   public render() {
     // return (<div>Main Panel <SignUp /></div>);
-    return (<div>Main Panel </div>);
+    return (<div>Main Panel</div>);
   }
 }
 

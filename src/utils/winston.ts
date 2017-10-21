@@ -1,16 +1,15 @@
-import * as bunyan from "bunyan";
-import Config from "../config/confManager";
-import * as ConsoleStream from "console-stream";
+import * as bunyan from "browser-bunyan";
 
 var logger = bunyan.createLogger({
-    name: 'play',
+    name: 'myLogger',
     streams: [
         {
             level: 'info',
-            stream: ConsoleStream as bunyan.Stream,
-            type: 'raw'
+            stream: new bunyan.ConsoleFormattedStream()
         }
-    ]
+    ],
+    serializers: bunyan.stdSerializers,
+    src: true
 });
 
 export default logger;
