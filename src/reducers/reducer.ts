@@ -1,6 +1,10 @@
+import * as path from "path";
 import { combineReducers } from "redux";
+
 import {Action } from "../actions/actions";
-import Winston from "../utils/winston";
+import Logger from "../utils/logger";
+
+const logger = Logger(path.basename(__filename));
 
 export interface IAppState {
   user: IUser
@@ -13,13 +17,13 @@ const initialState: IUser = {
 }
 
 function user (state: IUser = initialState, action: Action): IUser {
-  // Winston.info('reducer hit: ', action);
+  logger.info('reducer hit: ', action);
   switch (action.type) {
     case 'GET_MODEL':
-      // Winston.info('reducer GET_MODEL ', action, state);
+      logger.info('reducer GET_MODEL ', action, state);
       return action.user;
     default:
-    // Winston.info('reducer default ', state);
+    logger.info('reducer default ', state);
       return state;
   }
 }

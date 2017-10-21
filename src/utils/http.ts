@@ -1,4 +1,8 @@
-import Winston from "../utils/winston";
+import * as path from "path";
+
+import Logger from "../utils/logger";
+
+const logger = Logger(path.basename(__filename));
 
 export const get = (url: string): Promise<any> => {
 
@@ -17,18 +21,18 @@ export const get = (url: string): Promise<any> => {
   var request = new Request(url, requestConfig);
 
   return fetch(request).then((response) => {
-    Winston.info("response",response);
+    logger.info("response",response);
     if(!response.ok) {
       throw Error(response.statusText);
     }
     return response.json()
   })    
   .then((response: any) => {
-    Winston.info('response: ', response);
+    logger.info('response: ', response);
     return response;
   })
   .catch((err: any) => {
-    Winston.info('fetch error: ', err);
+    logger.info('fetch error: ', err);
     return null;
   });
 
@@ -52,15 +56,15 @@ export const post = (url: string, body: any): Promise<any> => {
   var request = new Request(url, requestConfig);
 
   return fetch(request).then((response) => {
-    Winston.info("response",response);
+    logger.info("response",response);
     return response.json()
   })    
   .then((response: any) => {
-    Winston.info('response: ', response);
+    logger.info('response: ', response);
     return response;
   })
   .catch((err: any) => {
-    Winston.info('error: ', err);
+    logger.info('error: ', err);
   });
 
 };

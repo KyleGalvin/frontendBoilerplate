@@ -8,6 +8,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 var config = {
   entry: APP_DIR + '/index.tsx',
+  devtool: 'inline-source-map',
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
@@ -42,7 +43,9 @@ var config = {
     ]
   },
   node: {
-    fs: "empty"
+    fs: "empty",
+    __dirname: true,
+    __filename: true
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),

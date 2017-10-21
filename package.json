@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/darkdigitaldream/frontendBoilerplate#readme",
   "devDependencies": {
+    "@types/browser-bunyan": "^0.4.3",
     "@types/es6-promise": "0.0.33",
+    "@types/node": "^8.0.46",
     "@types/react": "16.0.5",
     "@types/react-dom": "15.5.4",
     "@types/react-redux": "5.0.9",
@@ -39,6 +41,7 @@
   },
   "dependencies": {
     "browser-bunyan": "^0.4.0",
+    "path": "^0.12.7",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-flexbox-grid": "1.1.5",
