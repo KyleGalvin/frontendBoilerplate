@@ -1,20 +1,16 @@
-import * as Winston from "winston";
+import * as bunyan from "bunyan";
 import Config from "../config/confManager";
+import * as ConsoleStream from "console-stream";
 
-var logger = new Winston.Logger({
-  transports: [
-    // some other loggings
-    new Winston.transports.Console({
-      name: 'debug-console',
-      level: Config.logLevel,
-      prettyPrint: true,
-      handleExceptions: true,
-      json: false,
-      colorize: true
-    })
-
-  ],
-  exitOnError: false // don't crush no error
+var logger = bunyan.createLogger({
+    name: 'play',
+    streams: [
+        {
+            level: 'info',
+            stream: ConsoleStream as bunyan.Stream,
+            type: 'raw'
+        }
+    ]
 });
 
 export default logger;
