@@ -4,7 +4,7 @@ import { combineReducers } from "redux";
 import {Action } from "../actions/actions";
 import Logger from "../utils/logger";
 
-const logger = Logger(path.normalize(path.basename(__filename)));
+const logger = Logger(path.basename(__filename));
 
 export interface IAppState {
   user: IUser
