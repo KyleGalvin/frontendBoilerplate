@@ -1,51 +1,26 @@
 import * as React from "react";
-import * as redux from "redux";
 import { connect } from "react-redux";
+import * as path from "path";
 
 import * as Store from "../reducers/reducer";
 import * as Config from "../config/confManager";
-import { getData } from "../services/server";
-// import Log from "../utils/log";
+import Logger from "../utils/logger";
 
-// interface IProps {}
+const logger = Logger(path.basename(__filename));
 
-interface IState {
-  user: IUser;
-}
+const mapStateToProps = (state: Store.IAppState): IUser => {
+  logger.info({obj: state}, "personal summary mapStateToProps");
+  return state.user;
+};
 
-interface IConnectedState {
-  user: IUser;
-}
+const Component: React.SFC<IUser> = (props: IUser) => {
+  return (
+    <div>
+      <div>{props.firstName} {props.lastName}</div>
+      <img src={props.avatar} />
+      <div>Content</div>
+    </div>
+  );
+};
 
-interface IConnectedDispatch {
-  get: () => void;
-}
-
-const mapStateToProps = (state: Store.IAppState, props: {}): IConnectedState => ({
-  user: state.user
-});
-
-const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): IConnectedDispatch => ({
-  get: () => {
-    dispatch(getData());
-  },
-});
-
-class Component extends React.Component<IConnectedState & IConnectedDispatch, IState> {
-  constructor(props: IConnectedState & IConnectedDispatch) {
-    super(props);
-  }
-
-  public render() {
-    const { user } = this.props;
-    return (
-      <div>
-        <div>{user.firstName} {user.lastName}</div>
-        <img src={user.avatar} />
-        <div>Content</div>
-      </div>
-    );
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Component);
+export default connect(mapStateToProps)(Component);

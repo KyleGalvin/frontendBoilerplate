@@ -1,7 +1,7 @@
+import * as redux from 'redux'
 import * as path from "path";
 import { combineReducers } from "redux";
-
-import {Action } from "../actions/actions";
+import * as Actions from "../actions/actions";
 import Logger from "../utils/logger";
 
 const logger = Logger(path.basename(__filename));
@@ -10,24 +10,37 @@ export interface IAppState {
   user: IUser
 }
 
-const initialState: IUser = {
+export const initialState: IAppState = { 
+  user:{
+    firstName: "",
+    lastName: "",
+    avatar: ""
+  }
+}
+
+const initialUserState: IUser = { 
   firstName: "",
   lastName: "",
   avatar: ""
 }
 
-function user (state: IUser = initialState, action: Action): IUser {
-  logger.info({obj:action}, 'reducer hit:');
-  switch (action.type) {
-    case 'GET_MODEL':
-      logger.info({obj:{action: action, state: state}}, 'reducer GET_MODEL ');
-      return action.user;
-    default:
-    logger.info({obj:state}, 'reducer default ');
-      return state;
-  }
+function userReducer (state: IUser = initialUserState, action: Actions.Action): IUser{
+  logger.info({obj:{action: action, state: state}}, 'reducer hit:');
+
+    switch (action.type) {
+      case Actions.ActionTypes.GET_MODEL:
+        logger.info({obj:{action: action, state: state}}, 'reducer GET_MODEL ');
+        const newState: IUser = (action as Actions.UserAction).user;
+        return newState;
+      default:
+      logger.info({obj:state}, 'reducer default ');
+        return state;
+    }
+
+
+}
+const statePropertyToReducerMap = {
+  user: (userReducer as redux.Reducer<IUser>)
 }
 
-export const reducers = combineReducers<IAppState>({
-  user
-});
+export const reducers = combineReducers<IAppState>(statePropertyToReducerMap);

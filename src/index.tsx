@@ -1,3 +1,4 @@
+import * as path from "path";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as redux from "redux";
@@ -10,20 +11,22 @@ import PersonalSummary from "./components/personalSummary";
 import Contacts from "./components/contacts";
 import * as Store from "./reducers/reducer";
 import * as ServerService from "./services/server";
-
 import "./styles/basicTest.scss";
+import Logger from "./utils/logger";
 
+const logger = Logger(path.basename(__filename));
+
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux.compose;
 const store: redux.Store<Store.IAppState> = redux.createStore(
   Store.reducers,
-  {} as Store.IAppState,
-  redux.applyMiddleware(thunk)
+  Store.initialState,
+  composeEnhancers(redux.applyMiddleware(thunk))
 );
 
 // trigger the rest call to 'the server' which retrieves our app data.
 // this ends up in our store, which should bubble to the appropriate components.
 // ServerService.getData();
-
-store.dispatch(ServerService.getData());
+store.dispatch(ServerService.getUserData());
 
 ReactDOM.render(
   <Provider store={store}>
