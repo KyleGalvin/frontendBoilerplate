@@ -9,7 +9,7 @@ import Logger from "../utils/logger";
 import PersonalSummary from "../components/personalSummary";
 import Contacts from "../components/contacts";
 import MainPanel from "../components/mainPanel";
-
+import { Link } from 'react-router-dom'
 const logger = Logger(path.basename(__filename));
 
 const mapStateToProps = (state: Store.IAppState): IUser => {
@@ -24,6 +24,7 @@ const Component: React.SFC<IUser> = (props: IUser) => {
         <Col xs={12} md={4} className="personalSummaryContainer">
           <PersonalSummary />
           <Contacts />
+          <Link to="Login">Login</Link>
         </Col>
         <Col xs={12} md={8} className="mainContentContainer">
           <MainPanel />

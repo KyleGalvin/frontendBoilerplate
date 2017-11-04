@@ -5,7 +5,7 @@ import * as redux from "redux";
 import thunk from "redux-thunk";
 import createHistory from "history/createBrowserHistory";
 import { connect, Provider } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import { ConnectedRouter, routerReducer, routerMiddleware } from "react-router-redux";
 
 import MainPage from "./pages/mainPage";
@@ -33,12 +33,12 @@ store.dispatch(ServerService.getUserData());
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Route path="/" component={MainPage}>
-        <Route path="login" component={Login}/>
-        {/*<Route path="signup" component={Bar}/>*/}
-      </Route>
-    </ConnectedRouter>
+    <Router>
+    <div>
+      <Route exact path="/" component={MainPage}/>
+      <Route path="/Login" component={Login}/>
+    </div>
+    </Router>
   </Provider>,
   document.getElementById("reactContainer")
 );
