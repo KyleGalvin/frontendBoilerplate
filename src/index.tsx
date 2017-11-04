@@ -3,16 +3,19 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as redux from "redux";
 import thunk from "redux-thunk";
+import createHistory from "history/createBrowserHistory";
 import { connect, Provider } from "react-redux";
-import { Grid, Row, Col } from "react-flexbox-grid";
+import { Route } from "react-router-dom";
+import { ConnectedRouter, routerReducer, routerMiddleware } from "react-router-redux";
 
-import MainPanel from "./components/mainPanel";
-import PersonalSummary from "./components/personalSummary";
-import Contacts from "./components/contacts";
+import MainPage from "./pages/mainPage";
+import Login from "./pages/login";
 import * as Store from "./reducers/reducer";
 import * as ServerService from "./services/server";
 import "./styles/basicTest.scss";
 import Logger from "./utils/logger";
+
+const history = createHistory();
 
 const logger = Logger(path.basename(__filename));
 
@@ -30,18 +33,12 @@ store.dispatch(ServerService.getUserData());
 
 ReactDOM.render(
   <Provider store={store}>
-    <Grid fluid>
-      <Row center="xs" start="md">
-        <Col xs={12} md={4} className="personalSummaryContainer">
-          <PersonalSummary />
-          <Contacts />
-        </Col>
-        <Col xs={12} md={8} className="mainContentContainer">
-          <MainPanel />
-          <div className="box">Responsive</div>
-        </Col>
-      </Row>
-    </Grid>
+    <ConnectedRouter history={history}>
+      <Route path="/" component={MainPage}>
+        <Route path="login" component={Login}/>
+        {/*<Route path="signup" component={Bar}/>*/}
+      </Route>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById("reactContainer")
 );
