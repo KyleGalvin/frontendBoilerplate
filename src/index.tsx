@@ -10,6 +10,7 @@ import { ConnectedRouter, routerReducer, routerMiddleware } from "react-router-r
 
 import MainPage from "./pages/mainPage";
 import Login from "./pages/login";
+import Signup from "./pages/signup";
 import * as Store from "./reducers/reducer";
 import * as ServerService from "./services/server";
 import "./styles/basicTest.scss";
@@ -37,6 +38,7 @@ ReactDOM.render(
     <div>
       <Route exact path="/" component={MainPage}/>
       <Route path="/Login" component={Login}/>
+      <Route path="/Signup" component={Signup}/>
     </div>
     </Router>
   </Provider>,

@@ -26,6 +26,8 @@ var config = {
         include: /flexboxgrid/
       },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader" },
       {
         test: /\.scss$/, exclude: /node_modules/,
         use: [

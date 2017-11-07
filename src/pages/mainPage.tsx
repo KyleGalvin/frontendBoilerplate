@@ -25,6 +25,7 @@ const Component: React.SFC<IUser> = (props: IUser) => {
           <PersonalSummary />
           <Contacts />
           <Link to="Login">Login</Link>
+          <Link to="Signup">Signup</Link>
         </Col>
         <Col xs={12} md={8} className="mainContentContainer">
           <MainPanel />

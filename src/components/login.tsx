@@ -16,9 +16,9 @@ const mapStateToProps = (state: Store.IAppState): IUser => {
 const Component: React.SFC<IUser> = (props: IUser) => {
   return (
     <div>
-      <div>{props.firstName} {props.lastName}</div>
-      <img src={props.avatar} />
-      <div>Content</div>
+      <p>username</p><input type="text"/>
+      <p>password</p><input type="password"/>
+      <input type="button"/>
     </div>
   );
 };

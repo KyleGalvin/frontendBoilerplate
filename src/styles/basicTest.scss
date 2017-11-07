@@ -1,6 +1,11 @@
+@import "node_modules/font-awesome/scss/font-awesome.scss";
 // Variable
 $primary-color: hotpink;
 
+
+div {
+  font-family: FontAwesome;
+}
 // Mixin
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
