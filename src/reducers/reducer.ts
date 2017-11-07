@@ -3,20 +3,11 @@ import * as path from "path";
 import { combineReducers } from "redux";
 import * as Actions from "../actions/actions";
 import Logger from "../utils/logger";
+import * as Store from "../stores/store";
 
 const logger = Logger(path.basename(__filename));
 
-export interface IAppState {
-  user: IUser
-}
 
-export const initialState: IAppState = { 
-  user:{
-    firstName: "",
-    lastName: "",
-    avatar: ""
-  }
-}
 
 const initialUserState: IUser = { 
   firstName: "",
@@ -30,7 +21,7 @@ function userReducer (state: IUser = initialUserState, action: Actions.Action): 
     switch (action.type) {
       case Actions.ActionTypes.GET_MODEL:
         logger.info({obj:{action: action, state: state}}, 'reducer GET_MODEL ');
-        const newState: IUser = (action as Actions.UserAction).user;
+        const newState: IUser = (action as Actions.IUserAction).user;
         return newState;
       default:
       logger.info({obj:state}, 'reducer default ');
@@ -43,4 +34,4 @@ const statePropertyToReducerMap = {
   user: (userReducer as redux.Reducer<IUser>)
 }
 
-export const reducers = combineReducers<IAppState>(statePropertyToReducerMap);
+export const reducers = combineReducers<Store.IAppState>(statePropertyToReducerMap);

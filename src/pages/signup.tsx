@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import * as path from "path";
 import { Grid, Row, Col } from "react-flexbox-grid";
 
-import * as Store from "../reducers/reducer";
+import { IAppState } from "../stores/store";
 import * as Config from "../config/confManager";
 import Logger from "../utils/logger";
 import Signup from "../components/signup";
 
 const logger = Logger(path.basename(__filename));
 
-const mapStateToProps = (state: Store.IAppState): IUser => {
+const mapStateToProps = (state: IAppState): IUser => {
   logger.info({obj: state}, "personal summary mapStateToProps");
   return state.user;
 };

@@ -3,15 +3,16 @@ import * as redux from "redux";
 import { connect } from "react-redux";
 import * as path from "path";
 
-import * as Store from "../reducers/reducer";
-import * as Config from "../config/confManager";
+import { IAppState, Store } from "../stores/store";
+import Config from "../config/confManager";
 import Logger from "../utils/logger";
-
+import * as http from "../utils/http";
+import * as AuthService from "../services/auth";
 const logger = Logger(path.basename(__filename));
 
 // interface IProps {}
 
-interface IState {
+export interface IState {
 	username: string,
 	email: string,
 	password: string,
@@ -26,11 +27,11 @@ interface IState {
 
 // interface IConnectedDispatch {}
 
-const mapStateToProps = (state: Store.IAppState, mainPanelProps: {}): {} => ({
+const mapStateToProps = (state: IAppState, mainPanelProps: {}): {} => ({
   // counter: state.counter,
 });
 
-const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): {} => ({
+const mapDispatchToProps = (dispatch: redux.Dispatch<IAppState>): {} => ({
   // gotData: (state: Store.IAppState) => {
   //   dispatch(setData(state))
   // },
@@ -85,6 +86,12 @@ class Component extends React.Component<{}, IState> {
 
   private submit = (event: React.FormEvent<HTMLFormElement>) => {
   	logger.info("submit");
+    // const action = { 
+    //   type: AuthActions.AuthActionTypes.SIGN_UP,
+    //   user: this.state
+    // }
+    Store.dispatch(AuthService.signup(this.state));
+    //http.post(Config.serverURI);
   	event.preventDefault();
   }
 

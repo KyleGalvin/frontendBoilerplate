@@ -2,13 +2,13 @@ import * as React from "react";
 import { connect } from "react-redux";
 import * as path from "path";
 
-import * as Store from "../reducers/reducer";
+import { IAppState } from "../stores/store";
 import * as Config from "../config/confManager";
 import Logger from "../utils/logger";
 
 const logger = Logger(path.basename(__filename));
 
-const mapStateToProps = (state: Store.IAppState): IUser => {
+const mapStateToProps = (state: IAppState): IUser => {
   logger.info({obj: state}, "personal summary mapStateToProps");
   return state.user;
 };

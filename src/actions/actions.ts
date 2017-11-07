@@ -1,19 +1,19 @@
 import * as redux from 'redux'
-import { IAppState } from "../reducers/reducer";
+import { IAppState } from "../stores/store";
 import * as State from '../reducers/reducer';
 
 
 export enum ActionTypes {
-  GET_MODEL = 'GET_MODEL'
+  GET_MODEL = 'ACTION_GET_MODEL'
 }
 
-export interface UserAction { type: ActionTypes.GET_MODEL, user: IUser } 
+export interface IUserAction { type: ActionTypes.GET_MODEL, user: IUser } 
 
 //export interface OtherAction { type: string }
 
 //actions
 export type Action = 
-  UserAction
+  IUserAction
 //| OtherAction
 
  

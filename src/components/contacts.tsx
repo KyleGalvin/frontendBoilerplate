@@ -2,7 +2,7 @@ import * as React from "react";
 import * as redux from "redux";
 import { connect } from "react-redux";
 
-import * as Store from "../reducers/reducer";
+import { IAppState } from "../stores/store";
 
 // interface IProps {}
 
@@ -12,11 +12,11 @@ import * as Store from "../reducers/reducer";
 
 // interface IConnectedDispatch {}
 
-const mapStateToProps = (state: Store.IAppState, mainPanelProps: {}): {} => ({
+const mapStateToProps = (state: IAppState, mainPanelProps: {}): {} => ({
   // counter: state.counter,
 });
 
-const mapDispatchToProps = (dispatch: redux.Dispatch<Store.IAppState>): {} => ({
+const mapDispatchToProps = (dispatch: redux.Dispatch<IAppState>): {} => ({
   // gotData: (state: Store.IAppState) => {
   //   dispatch(setData(state))
   // },
