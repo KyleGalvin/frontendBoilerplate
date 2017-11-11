@@ -41,11 +41,10 @@ export const get = (url: string): Promise<any> => {
 export const post = (url: string, data: any): Promise<any> => {
   logger.info({obj: data},'posting body');
   const body = new FormData();
-  body.append("json", JSON.stringify(data));
+  Object.keys(data).map((value: string, index: number)=>{body.append(value, data[value])});
 
   var myHeaders = new Headers();
   myHeaders.append("Access-Control-Allow-Origin", "http://localhost:3000");
-  // myHeaders.append("Content-Type", "application/json");
 
   var cache = "default" as "default" | "no-store" | "reload" | "no-cache" | "force-cache" | undefined;
   var mode = "cors" as "cors" | "navigate" | "same-origin" | "no-cors" | undefined;
@@ -54,7 +53,7 @@ export const post = (url: string, data: any): Promise<any> => {
     headers: myHeaders,
     mode: mode,
     cache: cache,
-    body: body 
+    body: body
   };
 
   var request = new Request(url, requestConfig);
