@@ -15,6 +15,8 @@ const logger = Logger(path.basename(__filename));
 export interface IState {
 	username: string,
 	email: string,
+  firstName: string,
+  lastName: string,
 	password: string,
 	altPassword: string,
 	validUsername: boolean,
@@ -42,21 +44,35 @@ class Component extends React.Component<{}, IState> {
   public constructor() {
     super();
     this.state = {
-		username: "",
-		email: "",
-		password: "",
-		altPassword: "",
-		validUsername: false,
-		validEmail: false,
-		validPassword: false,
-		passwordMatch: false
-	}
+  		username: "",
+  		email: "",
+  		password: "",
+  		altPassword: "",
+      firstName: "",
+      lastName: "",
+  		validUsername: false,
+  		validEmail: false,
+  		validPassword: false,
+  		passwordMatch: false
+  	}
   }
 
   private usernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   	logger.info({obj: [event.target.value, event.target.name]}, "Event");
   	const newState = {...this.state, ...{username: event.target.value}};
   	this.setState(newState);
+  }
+
+  private firstNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    logger.info({obj: [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{firstName: event.target.value}};
+    this.setState(newState);
+  }
+
+  private lastNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    logger.info({obj: [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{lastName: event.target.value}};
+    this.setState(newState);
   }
 
   private emailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,6 +117,14 @@ class Component extends React.Component<{}, IState> {
         <label>
           <p>username</p>
           <input type="text" name="username" onChange={this.usernameChange}/>
+        </label>
+        <label>
+          <p>first name</p>
+          <input type="text" name="firstname" onChange={this.firstNameChange}/>
+        </label>
+        <label>
+          <p>last name</p>
+          <input type="text" name="lastname" onChange={this.lastNameChange}/>
         </label>
         <label>
           <p>email</p>
