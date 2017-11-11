@@ -14,8 +14,8 @@ const mapStateToProps = (state: IAppState): IUser => {
 };
 
 export interface IState {
-	username: string,
-	password: string
+  username: string;
+  password: string;
 }
 
 const Component: React.SFC<IUser> = (props: IUser) => {

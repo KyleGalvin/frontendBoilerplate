@@ -13,16 +13,16 @@ const logger = Logger(path.basename(__filename));
 // interface IProps {}
 
 export interface IState {
-	username: string,
-	email: string,
-  firstName: string,
-  lastName: string,
-	password: string,
-	altPassword: string,
-	validUsername: boolean,
-	validEmail: boolean,
-	validPassword: boolean,
-	passwordMatch: boolean
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  altPassword: string;
+  validUsername: boolean;
+  validEmail: boolean;
+  validPassword: boolean;
+  passwordMatch: boolean;
 }
 
 // interface IConnectedState {}
@@ -54,7 +54,7 @@ class Component extends React.Component<{}, IState> {
   		validEmail: false,
   		validPassword: false,
   		passwordMatch: false
-  	}
+  	};
   }
 
   private usernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,15 +76,15 @@ class Component extends React.Component<{}, IState> {
   }
 
   private emailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  	logger.info({obj: this.state}, "Event");
-  	var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  	if (emailRegex.test(event.target.value)) {
-	  	const newState = {...this.state, ...{email: event.target.value, validEmail: true}};
-	  	this.setState(newState);
-  	} else {
-	  	const newState = {...this.state, ...{validEmail: false}};
-	  	this.setState(newState);
-  	}
+    logger.info({obj: this.state}, "Event");
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (emailRegex.test(event.target.value)) {
+      const newState = {...this.state, ...{email: event.target.value, validEmail: true}};
+      this.setState(newState);
+    } else {
+      const newState = {...this.state, ...{validEmail: false}};
+      this.setState(newState);
+    }
 
   }
 
@@ -101,14 +101,9 @@ class Component extends React.Component<{}, IState> {
   }
 
   private submit = (event: React.FormEvent<HTMLFormElement>) => {
-  	logger.info("submit");
-    // const action = { 
-    //   type: AuthActions.AuthActionTypes.SIGN_UP,
-    //   user: this.state
-    // }
+    logger.info("submit");
     Store.dispatch(AuthService.signup(this.state));
-    //http.post(Config.serverURI);
-  	event.preventDefault();
+    event.preventDefault();
   }
 
   public render() {
@@ -128,7 +123,7 @@ class Component extends React.Component<{}, IState> {
         </label>
         <label>
           <p>email</p>
-          <div className={this.state.validEmail?"fa-check-circle-o":"fa-times-circle-o"}></div>
+          <div className={this.state.validEmail ? "fa-check-circle-o" : "fa-times-circle-o"}></div>
           <input type="text" name="email" onChange={this.emailChange}/>
         </label>
         <label>
