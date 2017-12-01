@@ -54,7 +54,7 @@ var config = {
     historyApiFallback: true,
     compress: true,
     port: 8080,
-    https: true
+    https: false
   }
   // plugins: [
   //   new UglifyJSPlugin({ output: {comments: false}})
