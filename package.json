@@ -10,9 +10,8 @@
     "assetBundle": "cp -r ./src/testData ./dist/ && cp ./index.html ./dist && cp -r ./src/images ./dist/ && cp ./src/images/favicon.ico ./dist",
     "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
     "serve": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js --no-inline",
-    "heroku-postbuild": "npm run bundle",
     "build": "npm run clean && npm run bundle",
-    "start": "node ./dist/bundle.js"
+    "start": "npm run bundle"
   },
   "repository": {
     "type": "git",
