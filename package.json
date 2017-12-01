@@ -24,8 +24,7 @@
     "url": "https://github.com/darkdigitaldream/frontendBoilerplate/issues"
   },
   "homepage": "https://github.com/darkdigitaldream/frontendBoilerplate#readme",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "@types/browser-bunyan": "^0.4.3",
     "@types/es6-promise": "0.0.33",
@@ -53,6 +52,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.4",
     "redux": "3.7.2",
+    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "2.2.0",
     "sass-loader": "6.0.6",
     "source-map-loader": "0.2.1",

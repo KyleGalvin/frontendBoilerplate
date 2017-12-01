@@ -1,5 +1,6 @@
 import * as redux from "redux";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 export interface IAppState {
   user: IUser
@@ -18,5 +19,5 @@ import * as Reducers from "../reducers/reducer";
 export const Store: redux.Store<IAppState> = redux.createStore(
   Reducers.reducers,
   initialState,
-  composeEnhancers(redux.applyMiddleware(thunk))
+  composeWithDevTools((redux.applyMiddleware(thunk)))
 );
