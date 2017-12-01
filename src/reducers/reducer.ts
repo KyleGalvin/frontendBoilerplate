@@ -7,8 +7,6 @@ import * as Store from "../stores/store";
 
 const logger = Logger(path.basename(__filename));
 
-
-
 const initialUserState: IUser = { 
   firstName: "",
   lastName: "",
