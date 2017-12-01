@@ -1,6 +1,8 @@
 import * as redux from "redux";
 import thunk from "redux-thunk";
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from "redux-devtools-extension";
+
+import * as Reducers from "../reducers/reducer";
 
 export interface IAppState {
   user: IUser
@@ -14,7 +16,6 @@ export const initialState: IAppState = {
   }
 }
 
-import * as Reducers from "../reducers/reducer";
 export const Store: redux.Store<IAppState> = redux.createStore(
   Reducers.reducers,
   initialState,
