@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === "DEV") {
   port = process.env.PORT;
   https = false;
 }
-console.log('running webpack on port ' + port);
+console.log('running webpack on port ' + port + " with https " + https);
 
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
