@@ -25,16 +25,6 @@
   },
   "homepage": "https://github.com/darkdigitaldream/frontendBoilerplate#readme",
   "devDependencies": {
-    "@types/browser-bunyan": "^0.4.3",
-    "@types/es6-promise": "0.0.33",
-    "@types/history": "^4.6.1",
-    "@types/node": "^8.0.46",
-    "@types/react": "16.0.5",
-    "@types/react-dom": "15.5.4",
-    "@types/react-redux": "5.0.9",
-    "@types/react-router": "^4.0.16",
-    "@types/react-router-dom": "^4.2.0",
-    "@types/react-router-redux": "^5.0.0",
     "awesome-typescript-loader": "3.2.3",
     "css-loader": "0.28.7",
     "file-loader": "^1.1.5",
@@ -47,10 +37,20 @@
     "typescript": "2.5.2",
     "uglifyjs-webpack-plugin": "0.4.6",
     "url-loader": "^0.6.2",
-
+    "webpack": "3.6.0",
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
+    "@types/browser-bunyan": "^0.4.3",
+    "@types/es6-promise": "0.0.33",
+    "@types/history": "^4.6.1",
+    "@types/node": "^8.0.46",
+    "@types/react": "16.0.5",
+    "@types/react-dom": "15.5.4",
+    "@types/react-redux": "5.0.9",
+    "@types/react-router": "^4.0.16",
+    "@types/react-router-dom": "^4.2.0",
+    "@types/react-router-redux": "^5.0.0",
     "browser-bunyan": "^0.4.0",
     "history": "^4.7.2",
     "path": "^0.12.7",
@@ -62,7 +62,6 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.4",
     "redux": "3.7.2",
-    "redux-thunk": "2.2.0",
-    "webpack": "3.6.0"
+    "redux-thunk": "2.2.0"
   }
 }
