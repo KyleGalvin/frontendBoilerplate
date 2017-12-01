@@ -8,6 +8,7 @@ var port = 8080;
 if (process.env.NODE_ENV === "DEV") {
   port = process.env.PORT;
 }
+console.log('running webpack on port ' + port);
 
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
