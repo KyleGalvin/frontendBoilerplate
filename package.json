@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "bundle": "webpack && npm run assetBundle && cp ./index.html ./dist && cp -r ./src/images ./dist/",
+    "bundle": "webpack && npm run assetBundle",
     "clean": "rm -rf ./dist",
-    "assetBundle": "cp -r ./src/testData ./dist/",
+    "assetBundle": "cp -r ./src/testData ./dist/ && cp ./index.html ./dist && cp -r ./src/images ./dist/",
     "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
     "serve": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js --no-inline",
     "heroku-postbuild": "npm run build",
