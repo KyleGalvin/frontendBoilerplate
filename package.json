@@ -9,7 +9,10 @@
     "clean": "rm -rf ./dist",
     "assetBundle": "cp -r ./src/testData ./dist/",
     "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
-    "serve": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js --no-inline"
+    "serve": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js --no-inline",
+    "heroku-postbuild": "npm run build",
+    "build": "npm run clean && npm run lint && npm run bundle",
+    "start": "node ./dist/src/index.js"
   },
   "repository": {
     "type": "git",
