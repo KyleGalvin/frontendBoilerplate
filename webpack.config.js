@@ -5,8 +5,10 @@ var BUILD_DIR = path.resolve(__dirname, 'dist/');
 var APP_DIR = path.resolve(__dirname, 'src/');
 
 var port = 8080;
+var https = true;
 if (process.env.NODE_ENV === "DEV") {
   port = process.env.PORT;
+  https = false;
 }
 console.log('running webpack on port ' + port);
 
@@ -60,7 +62,7 @@ var config = {
     historyApiFallback: true,
     compress: true,
     port: port,
-    https: false
+    https: https
   }
   // plugins: [
   //   new UglifyJSPlugin({ output: {comments: false}})
