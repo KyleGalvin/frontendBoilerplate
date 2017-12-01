@@ -4,7 +4,6 @@ import * as path from "path";
 import { Grid, Row, Col } from "react-flexbox-grid";
 
 import { IAppState } from "../stores/store";
-import * as Config from "../config/confManager";
 import Logger from "../utils/logger";
 import PersonalSummary from "../components/personalSummary";
 import Contacts from "../components/contacts";

@@ -4,6 +4,11 @@ var path = require('path');
 var BUILD_DIR = path.resolve(__dirname, 'dist/');
 var APP_DIR = path.resolve(__dirname, 'src/');
 
+var port = 8080;
+if (process.env.NODE_ENV === "DEV") {
+  port = process.env.PORT;
+}
+
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 var config = {
@@ -53,7 +58,7 @@ var config = {
     contentBase: path.join(__dirname, "dist"),
     historyApiFallback: true,
     compress: true,
-    port: 8080,
+    port: port,
     https: false
   }
   // plugins: [

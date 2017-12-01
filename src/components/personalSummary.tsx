@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as path from "path";
 
 import { IAppState } from "../stores/store";
-import * as Config from "../config/confManager";
 import Logger from "../utils/logger";
 
 const logger = Logger(path.basename(__filename));
