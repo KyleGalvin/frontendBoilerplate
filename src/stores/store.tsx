@@ -13,7 +13,7 @@ export const initialState: IAppState = {
   }
 }
 
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux.compose;
+const composeEnhancers = window ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : redux.compose;
 import * as Reducers from "../reducers/reducer";
 export const Store: redux.Store<IAppState> = redux.createStore(
   Reducers.reducers,
