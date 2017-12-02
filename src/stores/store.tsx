@@ -5,16 +5,16 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import * as Reducers from "../reducers/reducer";
 
 export interface IAppState {
-  user: IUser
+  user: IUser;
 }
 
 export const initialState: IAppState = { 
-  user:{
+  user: {
     firstName: "",
     lastName: "",
     avatar: ""
   }
-}
+};
 
 export const Store: redux.Store<IAppState> = redux.createStore(
   Reducers.reducers,
