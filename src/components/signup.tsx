@@ -88,15 +88,15 @@ class Component extends React.Component<{}, IState> {
   }
 
   private passwordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  	logger.info({obj: [event.target.value, event.target.name]}, "Event");
-  	const newState = {...this.state, ...{password: event.target.value}};
-  	this.setState(newState);
+    logger.info({obj: [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{password: event.target.value}};
+    this.setState(newState);
   }
 
   private altPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  	logger.info({obj: [event.target.value, event.target.name]}, "Event");
-  	const newState = {...this.state, ...{altPassword: event.target.value}};
-  	this.setState(newState);
+    logger.info({obj: [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{altPassword: event.target.value}};
+    this.setState(newState);
   }
 
   private submit = (event: React.FormEvent<HTMLFormElement>) => {
