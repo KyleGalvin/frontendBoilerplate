@@ -53,13 +53,13 @@ class Component extends React.Component<{}, IState> {
       validEmail: false,
       validPassword: false,
       passwordMatch: false
-  	};
+    };
   }
 
   private usernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  	logger.info({obj: [event.target.value, event.target.name]}, "Event");
-  	const newState = {...this.state, ...{username: event.target.value}};
-  	this.setState(newState);
+    logger.info({obj: [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{username: event.target.value}};
+    this.setState(newState);
   }
 
   private firstNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
