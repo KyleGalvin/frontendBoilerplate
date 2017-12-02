@@ -7,7 +7,7 @@ var APP_DIR = path.resolve(__dirname, 'src/');
 var port = 8080;
 var https = true;
 if (process.env.NODE_ENV === "DEV") {
-  port = process.env.PORT;
+  port = Number(process.env.PORT);
   https = false;
 }
 console.log('running webpack on port ' + port + " with https " + https);
