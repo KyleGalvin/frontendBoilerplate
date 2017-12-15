@@ -4,6 +4,7 @@ import * as path from "path";
 
 import { IAppState } from "../stores/store";
 import Logger from "../utils/logger";
+import { config } from "../config";
 
 const logger = Logger(path.basename(__filename));
 
@@ -16,7 +17,7 @@ const Component: React.SFC<IUser> = (props: IUser) => {
   return (
     <div>
       <div>{props.firstName} {props.lastName}</div>
-      <img src={props.avatar} />
+      <img src={config.authDomain + props.avatar} />
       <div>Content</div>
     </div>
   );
