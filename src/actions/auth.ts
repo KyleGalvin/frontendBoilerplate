@@ -6,8 +6,8 @@ export enum AuthActionTypes {
   LOG_IN = "AUTH_LOG_IN"
 }
 
-export interface ISignupAction { type: AuthActionTypes.SIGN_UP, user: SignupState } 
-export interface ILoginAction { type: AuthActionTypes.LOG_IN, user: LoginState } 
+export interface ISignupAction { type: AuthActionTypes.SIGN_UP, access_token: SignupState } 
+export interface ILoginAction { type: AuthActionTypes.LOG_IN, access_token: LoginState } 
 
 export type AuthAction = 
   ISignupAction

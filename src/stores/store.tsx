@@ -6,6 +6,7 @@ import * as Reducers from "../reducers/reducer";
 
 export interface IAppState {
   user: IUser;
+  auth: {}
 }
 
 export const initialState: IAppState = {
@@ -13,7 +14,8 @@ export const initialState: IAppState = {
     firstName: "",
     lastName: "",
     avatar: ""
-  }
+  },
+  auth: {}
 };
 
 export const Store: redux.Store<IAppState> = redux.createStore(

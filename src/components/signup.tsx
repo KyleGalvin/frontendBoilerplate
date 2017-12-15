@@ -2,6 +2,7 @@ import * as React from "react";
 import * as redux from "redux";
 import { connect } from "react-redux";
 import * as path from "path";
+import { Grid, Row, Col } from "react-flexbox-grid";
 
 import { IAppState, Store } from "../stores/store";
 import Logger from "../utils/logger";
@@ -76,7 +77,7 @@ class Component extends React.Component<{}, IState> {
 
   private emailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     logger.info({obj: this.state}, "Event");
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailRegex = /\S+@\S+/;
     if (emailRegex.test(event.target.value)) {
       const newState = {...this.state, ...{email: event.target.value, validEmail: true}};
       this.setState(newState);
@@ -108,32 +109,55 @@ class Component extends React.Component<{}, IState> {
   public render() {
     return (
       <form onSubmit={this.submit}>
-        <label>
-          <p>username</p>
-          <input type="text" name="username" onChange={this.usernameChange}/>
-        </label>
-        <label>
-          <p>first name</p>
-          <input type="text" name="firstname" onChange={this.firstNameChange}/>
-        </label>
-        <label>
-          <p>last name</p>
-          <input type="text" name="lastname" onChange={this.lastNameChange}/>
-        </label>
-        <label>
-          <p>email</p>
-          <div className={this.state.validEmail ? "fa-check-circle-o" : "fa-times-circle-o"}></div>
-          <input type="text" name="email" onChange={this.emailChange}/>
-        </label>
-        <label>
-          <p>password</p>
-          <input type="password" name="password" onChange={this.passwordChange}/>
-        </label>
-        <label>
-          <p>repeat password</p>
-          <input type="password" name="altpassword" onChange={this.altPasswordChange}/>
-        </label>
-        <input type="submit" value="Submit"/>
+        <Grid fluid>
+          <Row center="xs" start="md">
+            <label>
+              <p>username</p>
+              <input type="text" name="username" onChange={this.usernameChange}/>
+            </label>
+          </Row>
+          <Row center="xs" start="md">
+            <label>
+              <p>first name</p>
+              <input type="text" name="firstname" onChange={this.firstNameChange}/>
+            </label>
+          </Row>
+          <Row center="xs" start="md">
+            <label>
+              <p>last name</p>
+              <input type="text" name="lastname" onChange={this.lastNameChange}/>
+            </label>
+          </Row>
+          <Row center="xs" start="md">
+
+              <Col xs={12} md={4}>
+                <label>email</label>
+              </Col>
+              <Col xs={12} md={4}>
+                <div className={this.state.validEmail ? "fa-check-circle-o" : "fa-times-circle-o"}></div>
+              </Col>
+              <Col xs={12} md={4}>
+                <input type="text" name="email" onChange={this.emailChange}/>
+              </Col>
+
+          </Row>
+          <Row center="xs" start="md">
+            <label>
+              <p>password</p>
+              <input type="password" name="password" onChange={this.passwordChange}/>
+            </label>
+          </Row>
+          <Row center="xs" start="md">
+            <label>
+              <p>repeat password</p>
+              <input type="password" name="altpassword" onChange={this.altPasswordChange}/>
+            </label>
+          </Row>
+          <Row center="xs" start="md">
+            <input type="submit" value="Submit"/>
+          </Row>
+
+        </Grid>
       </form>
     );
   }
