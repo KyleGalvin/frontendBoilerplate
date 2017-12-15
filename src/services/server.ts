@@ -13,7 +13,7 @@ console.log('server.ts creating logger: ', __filename);
 export const getUserData = () => {
   return async (dispatch: redux.Dispatch<IUser>) => {
     try {
-      let response = await http.get(config.serverURI);
+      let response = await http.get(config.authDomain);
 
       logger.info({obj: response}, "dispatching data: ");
       if(!response){

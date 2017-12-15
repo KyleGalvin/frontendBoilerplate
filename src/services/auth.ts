@@ -14,7 +14,7 @@ console.log('server.ts creating logger: ', __filename);
 export const signup = (state: ISignupState) => {
   return async (dispatch: redux.Dispatch<IUser>) => {
     try {
-      let response = await http.post(config.serverURI + "/auth/signup", state);
+      let response = await http.post(config.authDomain + "/auth/signup", state);
 
       logger.info({obj: response}, "dispatching data: ");
       if(!response){
