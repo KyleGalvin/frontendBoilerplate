@@ -13,16 +13,16 @@ const logger = Logger(path.basename(__filename));
 // interface IProps {}
 
 export interface IState {
-  username: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  altPassword: string;
-  validUsername: boolean;
-  validEmail: boolean;
-  validPassword: boolean;
-  passwordMatch: boolean;
+  "username": string;
+  "email": string;
+  "firstName": string;
+  "lastName": string;
+  "password": string;
+  "altPassword": string;
+  "validUsername": boolean;
+  "validEmail": boolean;
+  "validPassword": boolean;
+  "passwordMatch": boolean;
 }
 
 // interface IConnectedState {}

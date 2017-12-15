@@ -10,7 +10,7 @@ import Login from "../components/login";
 const logger = Logger(path.basename(__filename));
 
 const mapStateToProps = (state: IAppState): IUser => {
-  logger.info({obj: state}, "personal summary mapStateToProps");
+  logger.info({"obj": state}, "personal summary mapStateToProps");
   return state.user;
 };
 
