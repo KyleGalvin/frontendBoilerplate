@@ -44,16 +44,16 @@ class Component extends React.Component<{}, IState> {
   public constructor() {
     super();
     this.state = {
-      username: "",
-      email: "",
-      password: "",
-      altPassword: "",
-      firstName: "",
-      lastName: "",
-      validUsername: false,
-      validEmail: false,
-      validPassword: false,
-      passwordMatch: false
+      "username": "",
+      "email": "",
+      "password": "",
+      "altPassword": "",
+      "firstName": "",
+      "lastName": "",
+      "validUsername": false,
+      "validEmail": false,
+      "validPassword": false,
+      "passwordMatch": false
     };
   }
 

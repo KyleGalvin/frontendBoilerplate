@@ -62,10 +62,14 @@ var config = {
     compress: true,
     port: port,
     https: https
-  }
-  // plugins: [
-  //   new UglifyJSPlugin({ output: {comments: false}})
-  // ]
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      },
+    })
+  ]
 };
 
 if (process.env.NODE_ENV === "DEV") {
