@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "bundle": "webpack && npm run assetBundle && cp ./index.html ./dist && cp -r ./src/images ./dist/",
+    "bundle": "webpack && npm run assetBundle",
     "clean": "rm -rf ./dist",
-    "assetBundle": "cp -r ./src/testData ./dist/",
+    "assetBundle": "cp -r ./src/testData ./dist/ && cp ./index.html ./dist && cp -r ./src/images ./dist/ && cp ./src/images/favicon.ico ./dist",
     "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
-    "watch": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js --no-inline",
-    "serve": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && node ./dist/bundle.js"
+    "serve": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --no-inline",
+    "start": "npm run serve"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
     "url": "https://github.com/darkdigitaldream/frontendBoilerplate/issues"
   },
   "homepage": "https://github.com/darkdigitaldream/frontendBoilerplate#readme",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "@types/browser-bunyan": "^0.4.3",
     "@types/es6-promise": "0.0.33",
     "@types/history": "^4.6.1",
@@ -34,22 +35,12 @@
     "@types/react-router-dom": "^4.2.0",
     "@types/react-router-redux": "^5.0.0",
     "awesome-typescript-loader": "3.2.3",
+    "browser-bunyan": "^0.4.0",
     "css-loader": "0.28.7",
     "file-loader": "^1.1.5",
     "font-awesome": "^4.7.0",
-    "node-sass": "4.5.3",
-    "sass-loader": "6.0.6",
-    "source-map-loader": "0.2.1",
-    "style-loader": "0.18.2",
-    "tslint": "5.7.0",
-    "uglifyjs-webpack-plugin": "0.4.6",
-    "url-loader": "^0.6.2",
-    "webpack": "3.6.0",
-    "webpack-dev-server": "^2.9.3"
-  },
-  "dependencies": {
-    "browser-bunyan": "^0.4.0",
     "history": "^4.7.2",
+    "node-sass": "4.5.3",
     "path": "^0.12.7",
     "react": "15.6.1",
     "react-dom": "15.6.1",
@@ -59,7 +50,17 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.4",
     "redux": "3.7.2",
+    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "2.2.0",
-    "typescript": "2.5.3"
+    "sass-loader": "6.0.6",
+    "source-map-loader": "0.2.1",
+    "style-loader": "0.18.2",
+    "tslint": "5.7.0",
+    "typescript": "2.5.2",
+    "uglifyjs-webpack-plugin": "0.4.6",
+    "url-loader": "^0.6.2",
+    "webpack": "3.6.0",
+    "webpack-dev-server": "^2.9.3"
+
   }
 }

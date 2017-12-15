@@ -2,7 +2,7 @@ import * as path from "path";
 import * as redux from "redux";
 
 import * as http from "../utils/http";
-import Config from "../config/confManager";
+import { config } from "../config";
 import * as AuthActions from "../actions/auth";
 import * as Store from "../reducers/reducer";
 import Logger from "../utils/logger";
@@ -14,7 +14,7 @@ console.log('server.ts creating logger: ', __filename);
 export const signup = (state: ISignupState) => {
   return async (dispatch: redux.Dispatch<IUser>) => {
     try {
-      let response = await http.post(Config.serverURI + "/auth/signup", state);
+      let response = await http.post(config.serverURI + "/auth/signup", state);
 
       logger.info({obj: response}, "dispatching data: ");
       if(!response){

@@ -1,12 +1,15 @@
 import * as redux from "redux";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+
+import * as Reducers from "../reducers/reducer";
 
 export interface IAppState {
   user: IUser;
-  auth: {};
+  auth: {}
 }
 
-export const initialState: IAppState = {
+export const initialState: IAppState = { 
   user: {
     firstName: "",
     lastName: "",
@@ -15,10 +18,8 @@ export const initialState: IAppState = {
   auth: {}
 };
 
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux.compose;
-import * as Reducers from "../reducers/reducer";
 export const Store: redux.Store<IAppState> = redux.createStore(
   Reducers.reducers,
   initialState,
-  composeEnhancers(redux.applyMiddleware(thunk))
+  composeWithDevTools((redux.applyMiddleware(thunk)))
 );

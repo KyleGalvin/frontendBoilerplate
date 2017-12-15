@@ -2,7 +2,6 @@ import * as React from "react";
 import { connect } from "react-redux";
 import * as path from "path";
 
-import * as Config from "../config/confManager";
 import { IAppState } from "../stores/store";
 import Logger from "../utils/logger";
 
