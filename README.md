@@ -1,3 +1,10 @@
+## status
+[![Build Status](https://travis-ci.org/KyleGalvin/frontendBoilerplate.svg?branch=master)](https://travis-ci.org/KyleGalvin/frontendBoilerplate)
+[![Coverage Status](https://coveralls.io/repos/github/KyleGalvin/frontendBoilerplate/badge.svg?branch=master)](https://coveralls.io/github/KyleGalvin/frontendBoilerplate?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/kylegalvin/frontendboilerplate/badge.svg)](https://snyk.io/test/github/kylegalvin/frontendboilerplate)
+[![Dependencies Status](https://david-dm.org/KyleGalvin/frontendBoilerplate.svg)](https://david-dm.org/KyleGalvin/frontendBoilerplate)
+[![devDependencies Status](https://david-dm.org/KyleGalvin/frontendBoilerplate/dev-status.svg)](https://david-dm.org/KyleGalvin/frontendBoilerplate?type=dev)
+
 ## Purpose:
 
 There are many 'boilerplate' starter projects out there, however I have not yet found one that uses all the parts of my preferred stack. This project is meant to fill that void.
