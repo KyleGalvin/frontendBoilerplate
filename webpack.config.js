@@ -68,4 +68,9 @@ var config = {
   // ]
 };
 
+if (process.env.NODE_ENV === "DEV") {
+  config.externals = { config: "./config/herokuDev.ts" };
+} else {
+  config.externals = { config: "./config/local.ts" };
+}
 module.exports = config;
