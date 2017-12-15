@@ -1,13 +1,14 @@
 import * as path from "path";
 
 import Logger from "../utils/logger";
+import { config } from "../config";
 
 const logger = Logger(path.normalize(path.basename(__filename)));
 
 export const get = (url: string): Promise<any> => {
 
   var myHeaders = new Headers();
-  myHeaders.append("Access-Control-Allow-Origin", "http://localhost:3000");
+  myHeaders.append("Access-Control-Allow-Origin", config.authDomain);
 
   var cache = "default" as "default" | "no-store" | "reload" | "no-cache" | "force-cache" | undefined;
   var mode = "cors" as "cors" | "navigate" | "same-origin" | "no-cors" | undefined;
@@ -44,7 +45,7 @@ export const post = (url: string, data: any): Promise<any> => {
   Object.keys(data).map((value: string, index: number)=>{body.append(value, data[value])});
 
   var myHeaders = new Headers();
-  myHeaders.append("Access-Control-Allow-Origin", "http://localhost:3000");
+  myHeaders.append("Access-Control-Allow-Origin", config.authDomain);
 
   var cache = "default" as "default" | "no-store" | "reload" | "no-cache" | "force-cache" | undefined;
   var mode = "cors" as "cors" | "navigate" | "same-origin" | "no-cors" | undefined;
