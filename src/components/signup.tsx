@@ -58,45 +58,45 @@ class Component extends React.Component<{}, IState> {
   }
 
   private usernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    logger.info({obj: [event.target.value, event.target.name]}, "Event");
-    const newState = {...this.state, ...{username: event.target.value}};
+    logger.info({"obj": [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{"username": event.target.value}};
     this.setState(newState);
   }
 
   private firstNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    logger.info({obj: [event.target.value, event.target.name]}, "Event");
-    const newState = {...this.state, ...{firstName: event.target.value}};
+    logger.info({"obj": [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{"firstName": event.target.value}};
     this.setState(newState);
   }
 
   private lastNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    logger.info({obj: [event.target.value, event.target.name]}, "Event");
-    const newState = {...this.state, ...{lastName: event.target.value}};
+    logger.info({"obj": [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{"lastName": event.target.value}};
     this.setState(newState);
   }
 
   private emailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    logger.info({obj: this.state}, "Event");
+    logger.info({"obj": this.state}, "Event");
     const emailRegex = /\S+@\S+/;
     if (emailRegex.test(event.target.value)) {
-      const newState = {...this.state, ...{email: event.target.value, validEmail: true}};
+      const newState = {...this.state, ...{"email": event.target.value, validEmail: true}};
       this.setState(newState);
     } else {
-      const newState = {...this.state, ...{validEmail: false}};
+      const newState = {...this.state, ...{"validEmail": false}};
       this.setState(newState);
     }
 
   }
 
   private passwordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    logger.info({obj: [event.target.value, event.target.name]}, "Event");
-    const newState = {...this.state, ...{password: event.target.value}};
+    logger.info({"obj": [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{"password": event.target.value}};
     this.setState(newState);
   }
 
   private altPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    logger.info({obj: [event.target.value, event.target.name]}, "Event");
-    const newState = {...this.state, ...{altPassword: event.target.value}};
+    logger.info({"obj": [event.target.value, event.target.name]}, "Event");
+    const newState = {...this.state, ...{"altPassword": event.target.value}};
     this.setState(newState);
   }
 
