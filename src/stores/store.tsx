@@ -8,7 +8,7 @@ export interface IAppState {
   user: IUser;
 }
 
-export const initialState: IAppState = { 
+export const initialState: IAppState = {
   user: {
     firstName: "",
     lastName: "",
