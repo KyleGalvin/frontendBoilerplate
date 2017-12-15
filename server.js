@@ -1,7 +1,7 @@
-const path = require('path')
-const express = require('express')
+import * as path from "path";
+import * as express from "express";
 
-const app = express()
+const app = express();
 const indexPath = path.join(__dirname, '/../index.html')
 const publicPath = express.static(path.join(__dirname, '../public'))
 app.use('/public', publicPath)
@@ -10,9 +10,9 @@ const port = (process.env.PORT || 8080)
 
 
 if (process.env.NODE_ENV !== 'production') {
-  const webpack = require('webpack')
-  const webpackDevMiddleware = require('webpack-dev-middleware')
-  const webpackHotMiddleware = require('webpack-hot-middleware')
+  import * as webpack from "webpack";
+  import * as webpackDevMiddleware from "webpack-dev-middleware";
+  import * as webpackHotMiddleware from "webpack-hot-middleware";
   const config = require('../webpack.dev.config.js')
   const compiler = webpack(config)
 
