@@ -9,6 +9,7 @@ import herokuDevConfig from "./herokuDev";
 
 export interface IConfig {
   "authDomain": string;
+  "frontendDomain": string;
   "logLevel": string
 }
 

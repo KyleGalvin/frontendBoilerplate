@@ -17,7 +17,7 @@ const Component: React.SFC<IUser> = (props: IUser) => {
   return (
     <div>
       <div>{props.firstName} {props.lastName}</div>
-      <img src={config.authDomain + props.avatar} />
+      <img src={config.frontendDomain + props.avatar} />
       <div>Content</div>
     </div>
   );
