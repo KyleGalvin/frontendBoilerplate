@@ -9,7 +9,8 @@ import Logger from "../utils/logger";
 import PersonalSummary from "../components/personalSummary";
 import Contacts from "../components/contacts";
 import MainPanel from "../components/mainPanel";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+
 const logger = Logger(path.basename(__filename));
 
 const mapStateToProps = (state: IAppState): IUser => {

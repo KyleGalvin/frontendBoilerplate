@@ -7,7 +7,23 @@
     "rules": {
       "trailing-comma": false,
       "ordered-imports": false,
-      "object-literal-sort-keys": false
+      "object-literal-sort-keys": false,
+      "object-literal-key-quotes": "consistent",
+      "member-ordering": [
+        true,
+        {
+          "order": [
+            {
+              "name": "static",
+              "kinds": [
+                "static-field",
+                "static-method"
+              ]
+            },
+            "constructor"
+          ]
+        }
+      ]
     },
     "rulesDirectory": []
 }

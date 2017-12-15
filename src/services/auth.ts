@@ -23,7 +23,7 @@ export const signup = (state: ISignupState) => {
 
       dispatch({
         type: AuthActions.AuthActionTypes.SIGN_UP,
-        user: response.user
+        access_token: response.access_token
       });
     } catch (err) {
       logger.error("Error getting data: ", err);

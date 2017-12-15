@@ -2,16 +2,18 @@ import * as redux from "redux";
 import thunk from "redux-thunk";
 
 export interface IAppState {
-  user: IUser
+  user: IUser;
+  auth: {};
 }
 
-export const initialState: IAppState = { 
-  user:{
+export const initialState: IAppState = {
+  user: {
     firstName: "",
     lastName: "",
     avatar: ""
-  }
-}
+  },
+  auth: {}
+};
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux.compose;
 import * as Reducers from "../reducers/reducer";

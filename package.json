@@ -9,7 +9,8 @@
     "clean": "rm -rf ./dist",
     "assetBundle": "cp -r ./src/testData ./dist/",
     "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
-    "serve": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js --no-inline"
+    "watch": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && webpack-dev-server --content-base ./dist/bundle.js --no-inline",
+    "serve": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && node ./dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -41,7 +42,6 @@
     "source-map-loader": "0.2.1",
     "style-loader": "0.18.2",
     "tslint": "5.7.0",
-    "typescript": "2.5.2",
     "uglifyjs-webpack-plugin": "0.4.6",
     "url-loader": "^0.6.2",
     "webpack": "3.6.0",
@@ -59,6 +59,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.4",
     "redux": "3.7.2",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "typescript": "2.5.3"
   }
 }
