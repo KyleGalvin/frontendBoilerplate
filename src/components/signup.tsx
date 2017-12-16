@@ -44,7 +44,13 @@ export class Component extends React.Component<{}, IState> {
 
   private usernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     logger.info({"obj": [event.target.value, event.target.name]}, "Event");
-    const newState = {...this.state, ...{"username": event.target.value, "validUsername": event.target.value !== null}};
+    const newState = {
+      ...this.state,
+      ...{
+        "username": event.target.value,
+        "validUsername": event.target.value !== null
+      }
+    };
     this.setState(newState);
   }
 

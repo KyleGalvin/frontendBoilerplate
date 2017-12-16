@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as path from "path";
 import { Grid, Row, Col } from "react-flexbox-grid";
 
-import { IAppState} from "../stores/store";
+import { IAppState } from "../stores/store";
 import Logger from "../utils/logger";
 import Login from "../components/login";
 
