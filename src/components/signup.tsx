@@ -11,8 +11,6 @@ import SignupField from "../components/signupField";
 import * as AuthService from "../services/auth";
 const logger = Logger(path.basename(__filename));
 
-// interface IProps {}
-
 export interface IState {
   "username": string;
   "email": string;
@@ -26,21 +24,7 @@ export interface IState {
   "passwordMatch": boolean;
 }
 
-// interface IConnectedState {}
-
-// interface IConnectedDispatch {}
-
-const mapStateToProps = (state: IAppState, mainPanelProps: {}): {} => ({
-  // counter: state.counter,
-});
-
-const mapDispatchToProps = (dispatch: redux.Dispatch<IAppState>): {} => ({
-  // gotData: (state: Store.IAppState) => {
-  //   dispatch(setData(state))
-  // },
-});
-
-class Component extends React.Component<{}, IState> {
+export class Component extends React.Component<{}, IState> {
 
   public constructor() {
     super({});
@@ -180,5 +164,3 @@ class Component extends React.Component<{}, IState> {
     );
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Component);

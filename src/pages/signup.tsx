@@ -5,7 +5,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 
 import { IAppState } from "../stores/store";
 import Logger from "../utils/logger";
-import Signup from "../components/signup";
+import { Component as Signup } from "../components/signup";
 
 const logger = Logger(path.basename(__filename));
 
