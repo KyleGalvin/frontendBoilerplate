@@ -7,16 +7,16 @@ import * as Reducers from "../reducers/reducer";
 export interface IAppState {
   user: IUser;
   auth: {};
-  signupForm: ISignupForm | null;
 }
 
 export interface ISignupFormField {
   "label": string;
   "name": string;
   "type": string;
-  "onChange": (event: React.ChangeEvent<HTMLInputElement>) => void
+  "onChange": (event: React.ChangeEvent<HTMLInputElement>) => void;
   "status": boolean;
 }
+
 export interface ISignupForm {
   "username": ISignupFormField;
   "email": ISignupFormField;
@@ -32,8 +32,7 @@ export const initialState: IAppState = {
     "lastName": "",
     "avatar": ""
   },
-  "auth": {},
-  "signupForm": null
+  "auth": {}
 };
 
 export const Store: redux.Store<IAppState> = redux.createStore(

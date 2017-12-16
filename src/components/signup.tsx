@@ -91,30 +91,43 @@ class Component extends React.Component<{}, IState> {
 
   private passwordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     logger.info({"obj": [event.target.value, event.target.name]}, "Event");
-    const validPassword = event.target.value !== null 
+    const validPassword = event.target.value !== null;
     const passwordMatch = event.target.value === this.state.altPassword;
-    const newState = {...this.state, ...{"password": event.target.value, "passwordMatch": passwordMatch, "validPassword": validPassword}};
+    const newState = {
+      ...this.state,
+      ...{
+        "password": event.target.value,
+        "passwordMatch": passwordMatch,
+        "validPassword": validPassword
+      }
+    };
     this.setState(newState);
   }
 
   private altPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     logger.info({"obj": [event.target.value, event.target.name]}, "Event");
     const validPassword = event.target.value !== null && event.target.value === this.state.password;
-    const newState = {...this.state, ...{"altPassword": event.target.value, "passwordMatch": validPassword}};
+    const newState = {
+      ...this.state,
+      ...{
+        "altPassword": event.target.value,
+        "passwordMatch": validPassword
+      }
+    };
     this.setState(newState);
   }
 
   private submit = (event: React.FormEvent<HTMLFormElement>) => {
     logger.info("submit");
-    if(this.state.validUsername 
-      && this.state.validEmail 
-      && this.state.validPassword 
+    if (this.state.validUsername
+      && this.state.validEmail
+      && this.state.validPassword
       && this.state.passwordMatch) {
       Store.dispatch(AuthService.signup(this.state));
     } else {
       logger.info("Invalid form");
     }
-    
+
     event.preventDefault();
   }
 
@@ -122,12 +135,42 @@ class Component extends React.Component<{}, IState> {
     return (
       <form onSubmit={this.submit}>
         <Grid fluid>
-          <SignupField label={"username"} name={"username"} type={"text"} status={this.state.validUsername} onChange={this.usernameChange.bind(this)}/>
-          <SignupField label={"first name"} name={"firstname"} type={"text"} status={true} onChange={this.firstNameChange.bind(this)}/>
-          <SignupField label={"last name"} name={"lastname"} type={"text"} status={true} onChange={this.lastNameChange.bind(this)}/>
-          <SignupField label={"email"} name={"email"} type={"text"} status={this.state.validEmail} onChange={this.emailChange.bind(this)}/>
-          <SignupField label={"password"} name={"password"} type={"password"} status={this.state.passwordMatch} onChange={this.passwordChange.bind(this)}/>
-          <SignupField label={"repeat password"} name={"altpassword"} type={"password"} status={this.state.passwordMatch} onChange={this.altPasswordChange.bind(this)}/>
+          <SignupField
+            label={"username"}
+            name={"username"}
+            type={"text"}
+            status={this.state.validUsername}
+            onChange={this.usernameChange.bind(this)}/>
+          <SignupField
+            label={"first name"}
+            name={"firstname"}
+            type={"text"}
+            status={true}
+            onChange={this.firstNameChange.bind(this)}/>
+          <SignupField
+            label={"last name"}
+            name={"lastname"}
+            type={"text"}
+            status={true}
+            onChange={this.lastNameChange.bind(this)}/>
+          <SignupField
+            label={"email"}
+            name={"email"}
+            type={"text"}
+            status={this.state.validEmail}
+            onChange={this.emailChange.bind(this)}/>
+          <SignupField
+            label={"password"}
+            name={"password"}
+            type={"password"}
+            status={this.state.passwordMatch}
+            onChange={this.passwordChange.bind(this)}/>
+          <SignupField
+            label={"repeat password"}
+            name={"altpassword"}
+            type={"password"}
+            status={this.state.passwordMatch}
+            onChange={this.altPasswordChange.bind(this)}/>
           <Row center="xs" start="md">
             <input type="submit" value="Submit"/>
           </Row>
