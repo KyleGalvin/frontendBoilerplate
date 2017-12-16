@@ -43,7 +43,7 @@
     "file-loader": "^1.1.5",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
-    "node-sass": "^4.5.3",
+    "node-sass": "4.5.3",
     "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
