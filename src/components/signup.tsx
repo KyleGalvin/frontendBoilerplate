@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<IAppState>): {} => ({
 class Component extends React.Component<{}, IState> {
 
   public constructor() {
-    super();
+    super({});
     this.state = {
       "username": "",
       "email": "",
