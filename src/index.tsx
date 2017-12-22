@@ -8,7 +8,7 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import { ConnectedRouter, routerReducer, routerMiddleware } from "react-router-redux";
 import { Store } from "./stores/store";
 
-import SplashPage from "./pages/splash";
+import LandingPage from "./pages/landing";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 
@@ -29,7 +29,7 @@ ReactDOM.render(
   <Provider store={Store}>
     <Router>
     <div>
-      <Route exact path="/" component={SplashPage}/>
+      <Route exact path="/" component={LandingPage}/>
       <Route path="/Login" component={Login}/>
       <Route path="/Signup" component={Signup}/>
     </div>

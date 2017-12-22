@@ -10,13 +10,19 @@ import { Link } from "react-router-dom";
 
 const logger = Logger(path.basename(__filename));
 
-const Component: React.SFC<{}> = (props: {}) => {
-  return (
+interface IProps {
+  isOpen: boolean;
+  children?: any;
+}
+
+const Component: React.SFC<IProps> = (props: IProps) => {
+  return (props.isOpen ?
     <div className="modalGreyout">
       <div className="modalContent">
-        <label> the quick brown fox jumped over the lazy dog</label>
+        {props.children}
       </div>
     </div>
+    : null
   );
 };
 
