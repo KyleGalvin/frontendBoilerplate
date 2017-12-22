@@ -1,7 +1,12 @@
 @import "node_modules/font-awesome/scss/font-awesome.scss";
 // Variable
 $primary-color: hotpink;
+$background-color: #f0f0f8;
+$text-color: #000020;
 
+body {
+  color: $text-color;
+}
 
 div {
   font-family: FontAwesome;
@@ -24,9 +29,34 @@ div {
 }
 
 .personalSummaryContainer {
-	background: grey;
+	background: $background-color;
 }
 
 .mainContentContainer {
 	background: $primary-color;
+}
+
+.modalGreyout {
+  position: absolute;
+  background: rgba(40, 40, 40, 0.7);
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.modalContent {
+  position: absolute;
+  background: $background-color;
+  width: 40%;
+  height: 100px;
+  margin: 0 auto;
+  bottom: 0;
+  left: 0;
+  top: 20%;
+  right: 0;
+  z-index: 10;
 }

@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import * as path from "path";
 import { Grid, Row, Col } from "react-flexbox-grid";
 
-import { ISignupFormField, IAppState } from "../stores/store";
+import { ISignupFormField } from "../stores/store";
 import Logger from "../utils/logger";
-import { config } from "../config";
 
 const logger = Logger(path.basename(__filename));
 
