@@ -6,7 +6,7 @@ import * as Reducers from "../reducers/reducer";
 
 export interface IAppState {
   user: IUser;
-  auth: {};
+  auth: string;
 }
 
 export interface ISignupFormField {
@@ -32,7 +32,7 @@ export const initialState: IAppState = {
     "lastName": "",
     "avatar": ""
   },
-  "auth": {}
+  "auth": window.sessionStorage.accessToken || ""
 };
 
 export const Store: redux.Store<IAppState> = redux.createStore(

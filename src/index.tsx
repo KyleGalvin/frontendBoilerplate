@@ -12,18 +12,12 @@ import LandingPage from "./pages/landing";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 
-import * as ServerService from "./services/server";
 import "./styles/basicTest.scss";
 import Logger from "./utils/logger";
 
 const history = createHistory();
 
 const logger = Logger(path.basename(__filename));
-
-// trigger the rest call to 'the server' which retrieves our app data.
-// this ends up in our store, which should bubble to the appropriate components.
-// ServerService.getData();
-Store.dispatch(ServerService.getUserData());
 
 ReactDOM.render(
   <Provider store={Store}>

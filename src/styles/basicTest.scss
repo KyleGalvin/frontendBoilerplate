@@ -24,6 +24,14 @@ div {
   overflow: hidden;
 }
 
+.button {
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: black;
+  cursor: pointer;
+}
+
 .my-other-element {
   @include border-radius(5px);
 }
