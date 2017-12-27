@@ -9,8 +9,6 @@ import { ConnectedRouter, routerReducer, routerMiddleware } from "react-router-r
 import { Store } from "./stores/store";
 
 import LandingPage from "./pages/landing";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
 
 import "./styles/basicTest.scss";
 import Logger from "./utils/logger";
@@ -19,13 +17,30 @@ const history = createHistory();
 
 const logger = Logger(path.basename(__filename));
 
+// const PrivateRoute = ({ component: Component, ...rest }) => (
+
+//   let token - localStorage.getItem('jwtToken');
+
+//   <Route {...rest} render={props => (
+//     token ? (
+//       <Component {...props}/>
+//     ) : (
+//       <Redirect to={{
+//         pathname: '/login',
+//         state: { from: props.location }
+//       }}/>
+//     )
+//   )}/>
+// )
+
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
     <div>
       <Route exact path="/" component={LandingPage}/>
-      <Route path="/Login" component={Login}/>
-      <Route path="/Signup" component={Signup}/>
+      {/* <PrivateRoute exact path="/" component={Dashboard}/> */}
+      {/* <Route path="/Login" component={Login}/>
+      <Route path="/Signup" component={Signup}/> */}
     </div>
     </Router>
   </Provider>,
