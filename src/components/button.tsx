@@ -17,7 +17,7 @@ interface IButton {
 
 const Component: React.SFC<IButton> = (props: IButton) => {
   return (
-    <div onClick={props.onClick}>
+    <div className={"button"} onClick={props.onClick}>
         {props.text}
     </div>
   );
