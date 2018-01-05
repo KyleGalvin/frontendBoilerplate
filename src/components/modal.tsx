@@ -17,17 +17,17 @@ interface IProps {
   children?: any;
 }
 
-const close = () => {
-
-}
-
 const Component: React.SFC<IProps> = (props: IProps) => {
   return (props.isOpen ?
     <div className="modalGreyout">
       <div className="modalContent">
-        <div className="modalNavbar">
-          <Button text={"X"} onClick={props.onClick}/>
-        </div>
+        <Row end="xs">
+          <Col xs={2}>
+            <div className="modalNavbar">
+              <Button text={"X"} onClick={props.onClick}/>
+            </div>
+          </Col>
+        </Row>
         {props.children}
       </div>
     </div>

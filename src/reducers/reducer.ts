@@ -33,9 +33,13 @@ function authReducer (state: {} = {}, action: AuthActions.AuthAction): {} {
 
   switch (action.type) {
     case AuthActions.AuthActionTypes.SIGN_UP:
+    case AuthActions.AuthActionTypes.LOG_IN:
       logger.info({obj:{action: action, state: state}}, 'reducer SIGN_UP');
       window.sessionStorage.accessToken = (action as AuthActions.ISignupAction).access_token;
       return (action as AuthActions.ISignupAction).access_token;
+    case AuthActions.AuthActionTypes.LOG_OUT:
+      delete window.sessionStorage.accessToken;
+      return "";
     default:
     logger.info({obj:state}, 'authReducer default ');
       return state;

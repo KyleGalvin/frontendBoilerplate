@@ -65,4 +65,18 @@ div {
   top: 20%;
   right: 0;
   z-index: 10;
+  border-radius: 10px;
+}
+
+.modalNavbar {
+  float: right;
+  width: 20px;
+}
+
+.placeholderText {
+  height: 200px;
+  line-height: 200px;
+  width: 100%;
+  text-align: center;
+  border-style: dashed;
 }
