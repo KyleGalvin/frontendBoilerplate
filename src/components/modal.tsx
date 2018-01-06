@@ -13,7 +13,7 @@ const logger = Logger(path.basename(__filename));
 
 interface IProps {
   isOpen: boolean;
-  onClick: () => void;
+  onExitClick: () => void;
   children?: any;
 }
 
@@ -24,7 +24,7 @@ const Component: React.SFC<IProps> = (props: IProps) => {
         <Row end="xs">
           <Col xs={2}>
             <div className="modalNavbar">
-              <Button text={"X"} onClick={props.onClick}/>
+              <Button text={"X"} onClick={props.onExitClick}/>
             </div>
           </Col>
         </Row>

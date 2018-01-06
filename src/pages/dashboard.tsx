@@ -5,6 +5,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 
 import Logger from "../utils/logger";
 import Dashboard from "../components/dashboard";
+import NavBar from "../components/navbar";
 
 const logger = Logger(path.basename(__filename));
 
@@ -17,7 +18,8 @@ class Component extends React.Component<{}, {}> {
   public render() {
     return (
       <Grid fluid>
-      <Dashboard/>
+        <NavBar/>
+        <Dashboard/>
       </Grid>
     );
   }

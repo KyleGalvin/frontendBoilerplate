@@ -8,17 +8,16 @@ import * as AuthService from "../services/auth";
 
 const logger = Logger(path.basename(__filename));
 
-const mapStateToProps = (state: IAppState): IUser => {
-  logger.info({"obj": state}, "personal summary mapStateToProps");
-  return state.user;
-};
-
 export interface IState {
-  username: string;
-  password: string;
+  "username": string;
+  "password": string;
 }
 
-export class Component extends React.Component<{}, IState> {
+export interface IProps {
+  "loggedIn": boolean;
+}
+
+export class Component extends React.Component<IProps, IState> {
 
   private usernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     logger.info({"obj": [event.target.value, event.target.name]}, "Event");
