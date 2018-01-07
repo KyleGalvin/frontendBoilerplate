@@ -10,17 +10,11 @@ export interface ILoginFormData {
 }
 
 export interface IAppState {
-  "user": IUser;
   "auth": string;
   "forms": Reducers.IForms;
 }
 
 export const initialState: IAppState = {
-  "user": {
-    "firstName": "",
-    "lastName": "",
-    "avatar": ""
-  },
   "auth": window.sessionStorage.accessToken || "",
   "forms": Reducers.initialFormsState
 };

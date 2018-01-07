@@ -7,7 +7,7 @@
 
 ## Purpose:
 
-There are many 'boilerplate' starter projects out there, however I have not yet found one that uses all the parts of my preferred stack. This project is meant to fill that void.
+This is a boilerplate launch project meant to accelerate application development start times for new projects.
 
 ## Tooling: 
 
@@ -25,16 +25,17 @@ There are many 'boilerplate' starter projects out there, however I have not yet 
 
 ## Developer Notes:
 
-previously I had used a custom flux model. This is my first dive into react-redux, and I learned most of what I know from the following guide (and supplimentary example project)
+This application pairs out of the box with a corresponding backend project hosted [here](https://github.com/KyleGalvin/backendBoilerplate)
 
-* https://rjzaworski.com/2016/08/typescript-redux-and-react
-* https://github.com/rjz/typescript-react-redux
+## Todo:
 
-I am by no means a frontend / UI expert, so this project is geared to help me learn responsive design patterns with flexbox and sass.
+Add unit tests
 
-I intend to add a unit test suite soon
+Make navbar component stateless
 
-Maybe sometime soon I'll have a matching backend boilerplate project to contribute as well, although there are fewer moving parts to choose from. It is likely there are already example projects out there using typescript, express, and whatever database solution fits the immediate need.
+Integrate modal component code into the page flow better
+
+login/logout redirect to/from dashboard
 
 ## To install this project:
 
@@ -42,5 +43,5 @@ npm install
 
 ## To run this project:
 
-npm run serve
+npm start
 
