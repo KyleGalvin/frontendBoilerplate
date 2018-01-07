@@ -1,55 +1,28 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import * as path from "path";
 
-import { IAppState, Store } from "../stores/store";
-import Logger from "../utils/logger";
+import { IAppState, Store, ILoginFormData } from "../stores/store";
 import * as AuthService from "../services/auth";
+import * as FormService from "../services/forms";
 
-const logger = Logger(path.basename(__filename));
+const mapStateToProps = (state: IAppState, props: ILoginFormData): ILoginFormData =>
+  state.forms.login;
 
-export interface IState {
-  "username": string;
-  "password": string;
-}
+const usernameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+  Store.dispatch(FormService.loginEditUsername(event.target.value));
 
-export interface IProps {
-  "loggedIn": boolean;
-}
+const passwordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+  Store.dispatch(FormService.loginEditPassword(event.target.value));
 
-export class Component extends React.Component<IProps, IState> {
+const login = (formData: ILoginFormData) =>
+  Store.dispatch(AuthService.login(formData));
 
-  private usernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    logger.info({"obj": [event.target.value, event.target.name]}, "Event");
-    this.setState({
-      ...this.state,
-      ...{
-        "username": event.target.value
-      }
-    });
-  }
+const Component = (props: ILoginFormData) => (
+  <div>
+    <p>username</p><input type="text" onChange={usernameChange}/>
+    <p>password</p><input type="password" onChange={passwordChange}/>
+    <input type="button" onClick={() => login(props)}/>
+  </div>
+);
 
-  private passwordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    logger.info({"obj": [event.target.value, event.target.name]}, "Event");
-    this.setState({
-      ...this.state,
-      ...{
-        "password": event.target.value
-      }
-    });
-  }
-
-  private login = () => {
-    Store.dispatch(AuthService.login(this.state));
-  }
-
-  public render() {
-    return (
-      <div>
-        <p>username</p><input type="text" onChange={this.usernameChange.bind(this)}/>
-        <p>password</p><input type="password" onChange={this.passwordChange.bind(this)}/>
-        <input type="button" onClick={this.login}/>
-      </div>
-    );
-  }
-}
+export default connect(mapStateToProps)(Component);

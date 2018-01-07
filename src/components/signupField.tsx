@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as path from "path";
 import { Grid, Row, Col } from "react-flexbox-grid";
 
-import { ISignupFormField } from "../stores/store";
+import { ISignupFormField } from "../reducers/reducer";
 import Logger from "../utils/logger";
 
 const logger = Logger(path.basename(__filename));

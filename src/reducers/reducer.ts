@@ -4,10 +4,61 @@ import { combineReducers } from "redux";
 
 import * as Actions from "../actions/actions";
 import * as AuthActions from "../actions/auth";
+import * as FormActions from "../actions/forms";
 import Logger from "../utils/logger";
 import * as Store from "../stores/store";
+import { ILoginFormData } from '../stores/store';
 
 const logger = Logger(path.basename(__filename));
+
+export interface IForms {
+  "login": ILoginFormData;
+  "signup": ISignupFormData;
+}
+
+export interface ISignupFormField {
+  "label": string;
+  "name": string;
+  "type": string;
+  "onChange": (event: React.ChangeEvent<HTMLInputElement>) => void;
+  "status": boolean;
+}
+
+export interface ISignupFormData {
+  "username": string;
+  "email": string;
+  "firstName": string;
+  "lastName": string;
+  "password": string;
+  "altPassword": string;
+  "validUsername": boolean;
+  "validEmail": boolean;
+  "validPassword": boolean;
+  "passwordMatch": boolean;
+}
+
+const initialSignupFormState = {
+  "username": "",
+  "email": "",
+  "firstName": "",
+  "lastName": "",
+  "password": "",
+  "altPassword": "",
+  "validUsername": false,
+  "validEmail": false,
+  "validPassword": false,
+  "passwordMatch": true
+}
+
+const initialLoginFormState: ILoginFormData =  {
+  "username": "",
+  "password": ""
+}
+
+export const initialFormsState = {
+  "login": initialLoginFormState,
+  "signup": initialSignupFormState
+}
 
 const initialUserState: IUser = { 
   firstName: "",
@@ -45,9 +96,29 @@ function authReducer (state: {} = {}, action: AuthActions.AuthAction): {} {
       return state;
   }
 }
+
+function formReducer (state: IForms = initialFormsState, action: FormActions.FormAction): IForms {
+  logger.info({obj:{action: action, state: state}}, 'reducer hit:');
+  switch (action.type) {
+    case FormActions.FormActionTypes.LOGIN_EDIT: 
+      return {
+        ...state,
+        "login": (action as FormActions.ILoginFormEditAction).data
+      }
+      case FormActions.FormActionTypes.SIGNUP_EDIT: 
+      return {
+        ...state,
+        "signup": (action as FormActions.ISignupFormEditAction).data
+      }
+  }
+  return state;
+
+}
+
 const statePropertyToReducerMap = {
   user: (userReducer as redux.Reducer<IUser>),
-  auth: (authReducer as redux.Reducer<{}>)
+  auth: (authReducer as redux.Reducer<{}>),
+  forms: (formReducer as redux.Reducer<IForms>)
 }
 
 export const reducers = combineReducers<Store.IAppState>(statePropertyToReducerMap);

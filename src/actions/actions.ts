@@ -1,8 +1,4 @@
-import * as redux from 'redux'
-import { IAppState } from "../stores/store";
-import * as State from '../reducers/reducer';
 import * as AuthActions from "./auth";
-
 
 export enum ActionTypes {
   GET_MODEL = 'ACTION_GET_MODEL'

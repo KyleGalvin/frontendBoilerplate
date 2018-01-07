@@ -8,8 +8,8 @@ import Logger from "../utils/logger";
 import * as AuthService from "../services/auth";
 import { IAppState, Store } from "../stores/store";
 import Modal from "../components/modal";
-import { Component as Login } from "../components/login";
-import { Component as Signup } from "../components/signup";
+import Login from "../components/login";
+import Signup from "../components/signup";
 
 const logger = Logger(path.basename(__filename));
 
@@ -73,10 +73,10 @@ class Component extends React.Component<{}, IState> {
     return (
       <div>
         <Modal isOpen={this.state.loginModal} onExitClick={this.loginClick.bind(this)}>
-          <Login loggedIn={this.state.loggedIn}/>
+          <Login {...Store.getState().forms.login}/>
         </Modal>
         <Modal isOpen={this.state.signupModal} onExitClick={this.signupClick.bind(this)}>
-          <Signup/>
+          <Signup {...Store.getState().forms.signup}/>
         </Modal>
         <Row end="xs">
           <Col xs={8} sm={4} md={2} lg={1}>

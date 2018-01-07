@@ -1,5 +1,5 @@
 import { IState as SignupState } from "../components/signup";
-import { IState as LoginState } from "../components/login";
+import { ILoginFormData } from "../stores/store";
 
 export enum AuthActionTypes {
   SIGN_UP = "AUTH_SIGNUP",
@@ -8,7 +8,7 @@ export enum AuthActionTypes {
 }
 
 export interface ISignupAction { type: AuthActionTypes.SIGN_UP, access_token: SignupState } 
-export interface ILoginAction { type: AuthActionTypes.LOG_IN, access_token: LoginState } 
+export interface ILoginAction { type: AuthActionTypes.LOG_IN, access_token: ILoginFormData } 
 export interface ILogoutAction { type: AuthActionTypes.LOG_OUT }
 
 export type AuthAction = 

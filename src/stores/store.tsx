@@ -4,26 +4,15 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import * as Reducers from "../reducers/reducer";
 
+export interface ILoginFormData {
+  "username": string;
+  "password": string;
+}
+
 export interface IAppState {
-  user: IUser;
-  auth: string;
-}
-
-export interface ISignupFormField {
-  "label": string;
-  "name": string;
-  "type": string;
-  "onChange": (event: React.ChangeEvent<HTMLInputElement>) => void;
-  "status": boolean;
-}
-
-export interface ISignupForm {
-  "username": ISignupFormField;
-  "email": ISignupFormField;
-  "firstName": ISignupFormField;
-  "lastName": ISignupFormField;
-  "password": ISignupFormField;
-  "altPassword": ISignupFormField;
+  "user": IUser;
+  "auth": string;
+  "forms": Reducers.IForms;
 }
 
 export const initialState: IAppState = {
@@ -32,7 +21,8 @@ export const initialState: IAppState = {
     "lastName": "",
     "avatar": ""
   },
-  "auth": window.sessionStorage.accessToken || ""
+  "auth": window.sessionStorage.accessToken || "",
+  "forms": Reducers.initialFormsState
 };
 
 export const Store: redux.Store<IAppState> = redux.createStore(
