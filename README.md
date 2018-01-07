@@ -29,13 +29,11 @@ This application pairs out of the box with a corresponding backend project hoste
 
 ## Todo:
 
-Add unit tests
-
-Make navbar component stateless
-
-Integrate modal component code into the page flow better
-
-login/logout redirect to/from dashboard
+* Add unit tests
+* Make navbar component stateless
+* Integrate modal component code into the page flow better
+* login/logout redirect to/from dashboard
+* Better HTTP verbs
 
 ## To install this project:
 
