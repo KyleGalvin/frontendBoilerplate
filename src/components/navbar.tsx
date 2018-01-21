@@ -6,86 +6,76 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import Button from "../components/button";
 import Logger from "../utils/logger";
 import * as AuthService from "../services/auth";
-import { IAppState, Store } from "../stores/store";
+import * as FormService from "../services/forms";
+import * as ModalService from "../services/modal";
+import { IAppState, store } from "../stores/store";
+import { ModalTypes } from "../reducers/reducer";
 import Modal from "../components/modal";
 import Login from "../components/login";
 import Signup from "../components/signup";
 
 const logger = Logger(path.basename(__filename));
 
-interface IState {
+interface INavBarProps {
   "loginModal": boolean;
   "signupModal": boolean;
   "loggedIn": boolean;
 }
 
-class Component extends React.Component<{}, IState> {
+const mapStateToProps = (state: IAppState, props: INavBarProps): INavBarProps =>
+({
+  "loginModal": state.modal === ModalTypes.LOGIN,
+  "signupModal": state.modal === ModalTypes.SIGNUP,
+  "loggedIn": state.auth !== ""
+});
 
-  public constructor(props: {}) {
-    super(props);
+const signupClick = () => {
+  store.dispatch(ModalService.openSignupModal());
+};
 
-    this.state = {
-      "loginModal": false,
-      "signupModal": false,
-      "loggedIn": Store.getState().auth !== ""
-    };
-  }
-  private signupClick = () => {
-    logger.info({"obj": this.state}, "signupClicked");
-    this.setState({
-      ...this.state,
-      ...{"signupModal": !this.state.signupModal}
-    });
-  }
+const logoutClick = () => {
+  store.dispatch(AuthService.logout());
+};
 
-  private logoutClick = () => {
-    Store.dispatch(AuthService.logout());
-  }
+const loginClick = () => {
+  store.dispatch(ModalService.openLoginModal());
+};
 
-  private loginClick = () => {
-    logger.info({"obj": this.state}, "loginClicked");
-    this.setState({
-      ...this.state,
-      ...{"loginModal": !this.state.loginModal}
-    });
-  }
+const Component = (props: INavBarProps) => {
+  const loggedOut = (
+    <Row center="xs">
+      <Col xs={6}>
+        <Button text="Login" onClick={loginClick}/>
+      </Col>
+      <Col xs={6}>
+        <Button text="Signup" onClick={signupClick}/>
+      </Col>
+    </Row>
+  );
 
-  public render() {
-    const loggedOut = (
-      <Row center="xs">
-        <Col xs={6}>
-          <Button text="Login" onClick={this.loginClick}/>
-        </Col>
-        <Col xs={6}>
-          <Button text="Signup" onClick={this.signupClick}/>
+  const loggedIn = (
+    <Row center="xs">
+      <Col xs={6}>
+        <Button text="Logout" onClick={logoutClick}/>
+      </Col>
+    </Row>
+  );
+
+  return (
+    <div>
+      <Modal isOpen={props.loginModal} onExitClick={loginClick}>
+        <Login {...store.getState().forms.login}/>
+      </Modal>
+      <Modal isOpen={props.signupModal} onExitClick={signupClick}>
+        <Signup {...store.getState().forms.signup}/>
+      </Modal>
+      <Row end="xs">
+        <Col xs={8} sm={4} md={2} lg={1}>
+          {props.loggedIn ? loggedIn : loggedOut }
         </Col>
       </Row>
-    );
+    </div>
+  );
+};
 
-    const loggedIn = (
-      <Row center="xs">
-        <Col xs={6}>
-          <Button text="Logout" onClick={this.logoutClick}/>
-        </Col>
-      </Row>
-    );
-
-    return (
-      <div>
-        <Modal isOpen={this.state.loginModal} onExitClick={this.loginClick.bind(this)}>
-          <Login {...Store.getState().forms.login}/>
-        </Modal>
-        <Modal isOpen={this.state.signupModal} onExitClick={this.signupClick.bind(this)}>
-          <Signup {...Store.getState().forms.signup}/>
-        </Modal>
-        <Row end="xs">
-          <Col xs={8} sm={4} md={2} lg={1}>
-            {this.state.loggedIn ? loggedIn : loggedOut }
-          </Col>
-        </Row>
-      </div>
-    );
-  }
-}
-
-export default Component;
+export default connect(mapStateToProps)(Component);

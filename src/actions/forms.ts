@@ -10,6 +10,6 @@ export enum FormActionTypes {
 export interface ISignupFormEditAction { type: FormActionTypes.SIGNUP_EDIT, data: ISignupFormData } 
 export interface ILoginFormEditAction { type: FormActionTypes.LOGIN_EDIT, data: ILoginFormData } 
 
-export type FormAction = 
+export type FormActions = 
   ILoginFormEditAction
 | ISignupFormEditAction

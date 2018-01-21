@@ -2,7 +2,7 @@ import * as path from "path";
 
 import Logger from "../utils/logger";
 import { config } from "../config";
-import { Store } from "../stores/store";
+import { store } from "../stores/store";
 
 const logger = Logger(path.normalize(path.basename(__filename)));
 
@@ -11,7 +11,7 @@ export const get = (url: string): Promise<any> => {
   var myHeaders = new Headers();
   myHeaders.append("Access-Control-Allow-Origin", config.authDomain);
 
-  const auth = Store.getState().auth;
+  const auth = store.getState().auth;
   if ( auth !== null) {
     myHeaders.append("Authorization", "Bearer " + auth);
   }
@@ -53,7 +53,7 @@ export const post = (url: string, data: any): Promise<any> => {
   var myHeaders = new Headers();
   myHeaders.append("Access-Control-Allow-Origin", config.authDomain);
 
-  const auth = Store.getState().auth;
+  const auth = store.getState().auth;
   if ( auth !== null) {
     myHeaders.append("Authorization", "Bearer " + auth);
   }

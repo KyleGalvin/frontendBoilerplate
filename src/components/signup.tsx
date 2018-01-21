@@ -3,11 +3,12 @@ import * as redux from "redux";
 import { connect } from "react-redux";
 import { Grid, Row, Col } from "react-flexbox-grid";
 
-import { IAppState, Store } from "../stores/store";
+import { IAppState, store } from "../stores/store";
 import { ISignupFormData } from "../reducers/reducer";
 
 import SignupField from "../components/signupField";
 import * as AuthService from "../services/auth";
+import * as ModalService from "../services/modal";
 import * as FormService from "../services/forms";
 
 export interface IState {
@@ -27,29 +28,30 @@ const mapStateToProps = (state: IAppState, props: ISignupFormData): ISignupFormD
   state.forms.signup;
 
 const usernameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  Store.dispatch(FormService.signupEditUsername(event.target.value));
+  store.dispatch(FormService.signupEditUsername(event.target.value));
 
 const firstNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  Store.dispatch(FormService.signupEditFirstName(event.target.value));
+  store.dispatch(FormService.signupEditFirstName(event.target.value));
 
 const lastNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  Store.dispatch(FormService.signupEditLastName(event.target.value));
+  store.dispatch(FormService.signupEditLastName(event.target.value));
 
 const emailChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  Store.dispatch(FormService.signupEditEmail(event.target.value));
+  store.dispatch(FormService.signupEditEmail(event.target.value));
 
 const passwordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  Store.dispatch(FormService.signupEditPassword(event.target.value));
+  store.dispatch(FormService.signupEditPassword(event.target.value));
 
 const altPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  Store.dispatch(FormService.signupEditAltPassword(event.target.value));
+  store.dispatch(FormService.signupEditAltPassword(event.target.value));
 
 const submit = (formData: ISignupFormData) => {
   if (formData.validUsername
     && formData.validEmail
     && formData.validPassword
     && formData.passwordMatch) {
-    Store.dispatch(AuthService.signup(formData));
+    store.dispatch(AuthService.signup(formData));
+    // Store.dispatch(ModalService.)
   } else {
 
   }

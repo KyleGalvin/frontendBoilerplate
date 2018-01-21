@@ -4,10 +4,13 @@ import { combineReducers } from "redux";
 
 import * as Actions from "../actions/actions";
 import * as AuthActions from "../actions/auth";
+import * as HistoryActions from "../actions/history";
 import * as FormActions from "../actions/forms";
+import * as ModalActions from "../actions/modal";
 import Logger from "../utils/logger";
 import * as Store from "../stores/store";
 import { ILoginFormData } from '../stores/store';
+import { ModalActionTypes } from '../actions/modal';
 
 const logger = Logger(path.basename(__filename));
 
@@ -50,6 +53,12 @@ const initialSignupFormState = {
   "passwordMatch": true
 }
 
+export enum ModalTypes {
+  LOGIN = "MODAL_LOGIN",
+  SIGNUP = "MODAL_SIGNUP",
+  NONE = "MODAL_NONE"
+}
+
 const initialLoginFormState: ILoginFormData =  {
   "username": "",
   "password": ""
@@ -60,7 +69,7 @@ export const initialFormsState = {
   "signup": initialSignupFormState
 }
 
-const initialUserState: IUser = { 
+const initialUserState: IUser = {
   firstName: "",
   lastName: "",
   avatar: ""
@@ -68,7 +77,6 @@ const initialUserState: IUser = {
 
 function userReducer (state: IUser = initialUserState, action: Actions.Action): IUser{
   logger.info({obj:{action: action, state: state}}, 'reducer hit:');
-
   switch (action.type) {
     case Actions.ActionTypes.GET_MODEL:
       logger.info({obj:{action: action, state: state}}, 'reducer GET_MODEL ');
@@ -81,7 +89,6 @@ function userReducer (state: IUser = initialUserState, action: Actions.Action): 
 
 function authReducer (state: {} = {}, action: AuthActions.AuthAction): {} {
   logger.info({obj:{action: action, state: state}}, 'reducer hit:');
-
   switch (action.type) {
     case AuthActions.AuthActionTypes.SIGN_UP:
     case AuthActions.AuthActionTypes.LOG_IN:
@@ -97,7 +104,7 @@ function authReducer (state: {} = {}, action: AuthActions.AuthAction): {} {
   }
 }
 
-function formReducer (state: IForms = initialFormsState, action: FormActions.FormAction): IForms {
+function formReducer (state: IForms = initialFormsState, action: FormActions.FormActions): IForms {
   logger.info({obj:{action: action, state: state}}, 'reducer hit:');
   switch (action.type) {
     case FormActions.FormActionTypes.LOGIN_EDIT: 
@@ -105,7 +112,7 @@ function formReducer (state: IForms = initialFormsState, action: FormActions.For
         ...state,
         "login": (action as FormActions.ILoginFormEditAction).data
       }
-      case FormActions.FormActionTypes.SIGNUP_EDIT: 
+    case FormActions.FormActionTypes.SIGNUP_EDIT: 
       return {
         ...state,
         "signup": (action as FormActions.ISignupFormEditAction).data
@@ -115,10 +122,32 @@ function formReducer (state: IForms = initialFormsState, action: FormActions.For
 
 }
 
+function historyReducer(state: string = "/", action: HistoryActions.HistoryActions): string {
+  switch (action.type) {
+    case HistoryActions.HistoryActionTypes.CHANGE_PATH:
+      return action.path;
+  }
+  return state;
+}
+
+function modalReducer (state: ModalTypes = ModalTypes.NONE, action: ModalActions.ModalActions): ModalTypes {
+  switch (action.type) {
+    case ModalActions.ModalActionTypes.LOGIN_MODAL:
+      return ModalTypes.LOGIN;
+    case ModalActions.ModalActionTypes.SIGNUP_MODAL:
+      return ModalTypes.SIGNUP;
+    case ModalActions.ModalActionTypes.CLOSE_MODAL:
+      return ModalTypes.NONE;
+  }
+  return state;
+}
+
 const statePropertyToReducerMap = {
+  modal: (modalReducer as redux.Reducer<ModalTypes>),
   user: (userReducer as redux.Reducer<IUser>),
   auth: (authReducer as redux.Reducer<{}>),
-  forms: (formReducer as redux.Reducer<IForms>)
+  forms: (formReducer as redux.Reducer<IForms>),
+  path: (historyReducer as redux.Reducer<string>)
 }
 
 export const reducers = combineReducers<Store.IAppState>(statePropertyToReducerMap);

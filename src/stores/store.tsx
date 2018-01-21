@@ -1,6 +1,8 @@
 import * as redux from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { createBrowserHistory } from "History";
+import { routerMiddleware } from "react-router-redux";
 
 import * as Reducers from "../reducers/reducer";
 
@@ -10,17 +12,23 @@ export interface ILoginFormData {
 }
 
 export interface IAppState {
+  "modal": Reducers.ModalTypes;
   "auth": string;
   "forms": Reducers.IForms;
+  "path": string;
 }
 
 export const initialState: IAppState = {
+  "modal": Reducers.ModalTypes.NONE,
   "auth": window.sessionStorage.accessToken || "",
-  "forms": Reducers.initialFormsState
+  "forms": Reducers.initialFormsState,
+  "path": "/"
 };
+export const history = createBrowserHistory()
+export const historyMiddleware = routerMiddleware(history);
 
-export const Store: redux.Store<IAppState> = redux.createStore(
+export const store: redux.Store<IAppState> = redux.createStore(
   Reducers.reducers,
   initialState,
-  composeWithDevTools((redux.applyMiddleware(thunk)))
+  composeWithDevTools((redux.applyMiddleware(thunk, historyMiddleware)))
 );

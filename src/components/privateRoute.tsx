@@ -1,35 +1,48 @@
 import * as React from "react";
-import { Route, Redirect, RouteProps } from "react-router-dom";
+import { Route, Redirect, RouteProps, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import * as path from "path";
 
+import Logger from "../utils/logger";
 import { IAppState } from "../stores/store";
 
-interface IProps {
-  loggedIn: boolean;
+const logger = Logger(path.basename(__filename));
+
+interface IOwnProps {
+  component: React.ComponentClass<Pick<IStateProps, never>>;
   path: string;
-  routeProps?: RouteProps;
-  children?: any;
-  exact: boolean;
 }
 
-const mapStateToProps = (state: IAppState, ownProps: IProps): IProps => {
+interface IStateProps {
+  component: React.ComponentClass<Pick<IStateProps, never>>;
+  loggedIn: boolean;
+  path: string;
+  children?: any;
+  exact?: boolean;
+}
+
+const mapStateToProps = (state: IAppState, ownProps: IOwnProps): IStateProps => {
   return {
     ...ownProps,
-    ... {"loggedIn": state.auth !== ""}
+    ... {
+      "loggedIn": state.auth !== ""
+    }
   };
 };
 
-const PrivateRouteComponent = (props: IProps) => (
-  <Route {...props.exact} {...props.routeProps} render={() => (
+const PrivateRouteComponent = (props: IStateProps) => {
+  logger.info("PRIVATE RENDER");
+  return (
     props.loggedIn ? (
-      <div>{props.children}</div>
+      <Route {...props.exact} component={props.component} />
     ) : (
       <Redirect to={{
         "pathname": "/",
         "state": { "from": props.path }
       }} />
-    ))}
-  />
-);
+    )
+  )
+}
 
-export default connect(mapStateToProps)(PrivateRouteComponent);
+
+export default withRouter(connect(mapStateToProps)(PrivateRouteComponent) as any);
