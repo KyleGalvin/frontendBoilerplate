@@ -8,7 +8,6 @@ import { IAppState, store, ILoginFormData } from "../stores/store";
 import * as AuthService from "../services/auth";
 import * as FormService from "../services/forms";
 import * as ModalService from "../services/modal";
-import * as HistoryService from "../services/history";
 
 const logger = Logger(path.basename(__filename));
 
@@ -21,24 +20,31 @@ const usernameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
 const passwordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
   store.dispatch(FormService.loginEditPassword(event.target.value));
 
-const login = async (formData: ILoginFormData) => {
+const submit = async (formData: ILoginFormData) => {
   await store.dispatch(AuthService.login(formData));
   const state = store.getState();
   if (state.auth !== "") {
     await store.dispatch(ModalService.closeModal());
     await store.dispatch(push("/Dashboard"));
-
   } else {
     logger.info("Login failed!");
   }
 };
 
-const Component = (props: ILoginFormData) => (
-  <div>
-    <p>username</p><input type="text" onChange={usernameChange}/>
-    <p>password</p><input type="password" onChange={passwordChange}/>
-    <input type="button" onClick={() => login(props)}/>
-  </div>
-);
+const Component = (props: ILoginFormData) => {
+  const submitWrapper = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+    submit(props);
+    event.preventDefault();
+  };
+
+  return (
+    <form>
+      <p>username</p><input type="text" onChange={usernameChange}/>
+      <p>password</p><input type="password" onChange={passwordChange}/>
+      <input type="button" value="Submit" onClick={() => submit(props)}/>
+    </form>
+  );
+};
 
 export default connect(mapStateToProps)(Component);

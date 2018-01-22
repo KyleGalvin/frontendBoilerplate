@@ -59,11 +59,13 @@ const submit = (formData: ISignupFormData) => {
 
 const Component = (props: ISignupFormData) => {
   const submitWrapper = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+    submit(props);
     event.preventDefault();
   };
 
   return (
-    <form onSubmit={() => submit}>
+    <form>
       <Grid fluid>
         <SignupField
           label={"username"}
@@ -102,7 +104,7 @@ const Component = (props: ISignupFormData) => {
           status={props.passwordMatch}
           onChange={altPasswordChange}/>
         <Row center="xs" start="md">
-          <input type="submit" value="Submit"/>
+          <input type="button" value="Submit" onClick={() => submit(props)}/>
         </Row>
       </Grid>
     </form>

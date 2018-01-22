@@ -3,7 +3,7 @@
 $primary-color: hotpink;
 $background-color: #f0f0f8;
 $text-color: #000020;
-
+$navbar-height: 30px;
 body {
   color: $text-color;
 }
@@ -24,12 +24,21 @@ div {
   overflow: hidden;
 }
 
+.navbar {
+  height: $navbar-height;
+}
+
 .button {
   border-style: solid;
   border-radius: 10px;
   border-width: 2px;
   border-color: black;
   cursor: pointer;
+  text-align: center;
+}
+
+.icon {
+  font-size: 25px;
 }
 
 .my-other-element {
@@ -74,8 +83,8 @@ div {
 }
 
 .placeholderText {
-  height: 200px;
-  line-height: 200px;
+  height: calc(100% - 10px - #{$navbar-height});
+  //line-height: 200px;
   width: 100%;
   text-align: center;
   border-style: dashed;

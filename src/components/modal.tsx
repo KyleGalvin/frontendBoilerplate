@@ -24,7 +24,7 @@ const Component: React.SFC<IProps> = (props: IProps) => {
         <Row end="xs">
           <Col xs={2}>
             <div className="modalNavbar">
-              <Button text={"X"} onClick={props.onExitClick}/>
+              <div className="fa-times-circle-o icon" onClick={props.onExitClick}></div>
             </div>
           </Col>
         </Row>

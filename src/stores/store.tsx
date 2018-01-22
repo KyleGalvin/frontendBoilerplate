@@ -15,17 +15,16 @@ export interface IAppState {
   "modal": Reducers.ModalTypes;
   "auth": string;
   "forms": Reducers.IForms;
-  "path": string;
 }
 
 export const initialState: IAppState = {
   "modal": Reducers.ModalTypes.NONE,
   "auth": window.sessionStorage.accessToken || "",
-  "forms": Reducers.initialFormsState,
-  "path": "/"
+  "forms": Reducers.initialFormsState
 };
-export const history = createBrowserHistory()
-export const historyMiddleware = routerMiddleware(history);
+
+export const history = createBrowserHistory();
+const historyMiddleware = routerMiddleware(history);
 
 export const store: redux.Store<IAppState> = redux.createStore(
   Reducers.reducers,

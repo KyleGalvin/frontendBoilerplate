@@ -4,7 +4,6 @@ import { combineReducers } from "redux";
 
 import * as Actions from "../actions/actions";
 import * as AuthActions from "../actions/auth";
-import * as HistoryActions from "../actions/history";
 import * as FormActions from "../actions/forms";
 import * as ModalActions from "../actions/modal";
 import Logger from "../utils/logger";
@@ -122,14 +121,6 @@ function formReducer (state: IForms = initialFormsState, action: FormActions.For
 
 }
 
-function historyReducer(state: string = "/", action: HistoryActions.HistoryActions): string {
-  switch (action.type) {
-    case HistoryActions.HistoryActionTypes.CHANGE_PATH:
-      return action.path;
-  }
-  return state;
-}
-
 function modalReducer (state: ModalTypes = ModalTypes.NONE, action: ModalActions.ModalActions): ModalTypes {
   switch (action.type) {
     case ModalActions.ModalActionTypes.LOGIN_MODAL:
@@ -147,7 +138,6 @@ const statePropertyToReducerMap = {
   user: (userReducer as redux.Reducer<IUser>),
   auth: (authReducer as redux.Reducer<{}>),
   forms: (formReducer as redux.Reducer<IForms>),
-  path: (historyReducer as redux.Reducer<string>)
 }
 
 export const reducers = combineReducers<Store.IAppState>(statePropertyToReducerMap);

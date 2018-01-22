@@ -15,7 +15,7 @@ const Component: React.SFC<ISignupFormField> = (props: ISignupFormField) => {
             <label>{props.label}</label>
             </Col>
             <Col xs={12} md={4}>
-            <div className={props.status === true ? "fa-check-circle-o" : "fa-times-circle-o"}></div>
+            <div className={props.status === true ? "fa-check-circle-o icon" : "fa-times-circle-o icon"}></div>
             </Col>
             <Col xs={12} md={4}>
             <input type="text" name={props.name} onChange={props.onChange} />

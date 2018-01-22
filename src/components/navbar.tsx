@@ -41,9 +41,13 @@ const loginClick = () => {
   store.dispatch(ModalService.openLoginModal());
 };
 
+const exitClick = () => {
+  store.dispatch(ModalService.closeModal());
+};
+
 const Component = (props: INavBarProps) => {
   const loggedOut = (
-    <Row center="xs">
+    <Row end="xs">
       <Col xs={6}>
         <Button text="Login" onClick={loginClick}/>
       </Col>
@@ -54,7 +58,7 @@ const Component = (props: INavBarProps) => {
   );
 
   const loggedIn = (
-    <Row center="xs">
+    <Row end="xs">
       <Col xs={6}>
         <Button text="Logout" onClick={logoutClick}/>
       </Col>
@@ -63,13 +67,13 @@ const Component = (props: INavBarProps) => {
 
   return (
     <div>
-      <Modal isOpen={props.loginModal} onExitClick={loginClick}>
+      <Modal isOpen={props.loginModal} onExitClick={exitClick}>
         <Login {...store.getState().forms.login}/>
       </Modal>
-      <Modal isOpen={props.signupModal} onExitClick={signupClick}>
+      <Modal isOpen={props.signupModal} onExitClick={exitClick}>
         <Signup {...store.getState().forms.signup}/>
       </Modal>
-      <Row end="xs">
+      <Row className ="navbar" end="xs">
         <Col xs={8} sm={4} md={2} lg={1}>
           {props.loggedIn ? loggedIn : loggedOut }
         </Col>

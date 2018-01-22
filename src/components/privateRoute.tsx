@@ -41,8 +41,7 @@ const PrivateRouteComponent = (props: IStateProps) => {
         "state": { "from": props.path }
       }} />
     )
-  )
-}
-
+  );
+};
 
 export default withRouter(connect(mapStateToProps)(PrivateRouteComponent) as any);
