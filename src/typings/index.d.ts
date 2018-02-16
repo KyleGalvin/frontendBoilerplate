@@ -18,3 +18,5 @@ interface IUserCreationRequest {
 interface IUserCreationResponse {
   status: string
 }
+
+declare module "swagger-ui";

@@ -48,10 +48,11 @@ export const get = (url: string): Promise<any> => {
 export const post = (url: string, data: any): Promise<any> => {
   logger.info({obj: data},'posting body');
   const body = new FormData();
-  Object.keys(data).map((value: string, index: number)=>{body.append(value, data[value])});
-
+  //Object.keys(data).map((value: string, index: number)=>{body.append(value, data[value])});
+  body.append( "json", JSON.stringify( data ) );
   var myHeaders = new Headers();
   myHeaders.append("Access-Control-Allow-Origin", config.authDomain);
+  myHeaders.append("Content-Type", "application/json");
 
   const auth = store.getState().auth;
   if ( auth !== null) {
@@ -65,7 +66,7 @@ export const post = (url: string, data: any): Promise<any> => {
     headers: myHeaders,
     mode: mode,
     cache: cache,
-    body: body
+    body: JSON.stringify(data)
   };
 
   var request = new Request(url, requestConfig);

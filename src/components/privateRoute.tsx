@@ -13,10 +13,8 @@ interface IOwnProps {
   path: string;
 }
 
-interface IStateProps {
-  component: React.ComponentClass<Pick<IStateProps, never>>;
+interface IStateProps extends IOwnProps {
   loggedIn: boolean;
-  path: string;
   children?: any;
   exact?: boolean;
 }

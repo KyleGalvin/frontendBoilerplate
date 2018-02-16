@@ -13,6 +13,7 @@ import { ModalTypes } from "../reducers/reducer";
 import Modal from "../components/modal";
 import Login from "../components/login";
 import Signup from "../components/signup";
+import Dropdown from "../components/dropdown";
 
 const logger = Logger(path.basename(__filename));
 
@@ -45,6 +46,10 @@ const exitClick = () => {
   store.dispatch(ModalService.closeModal());
 };
 
+const openAccountDropdown = () => {
+  logger.info("Open Account Dropdown")
+};
+
 const Component = (props: INavBarProps) => {
   const loggedOut = (
     <Row end="xs">
@@ -61,6 +66,9 @@ const Component = (props: INavBarProps) => {
     <Row end="xs">
       <Col xs={6}>
         <Button text="Logout" onClick={logoutClick}/>
+      </Col>
+      <Col xs={6}>
+        <Dropdown image={""} />
       </Col>
     </Row>
   );

@@ -11,7 +11,8 @@ if (process.env.NODE_ENV === "DEV") {
   https = false;
 }
 
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 var config = {
   entry: APP_DIR + '/index.tsx',
@@ -36,7 +37,7 @@ var config = {
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader" },
       {
-        test: /\.scss$/, exclude: /node_modules/,
+        test: /\.(css|scss)$/, exclude: /node_modules/,
         use: [
           {
             loader: "style-loader"
@@ -68,7 +69,9 @@ var config = {
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       },
-    })
+    }),
+   // new UglifyJSPlugin(),
+    new CompressionPlugin()
   ]
 };
 

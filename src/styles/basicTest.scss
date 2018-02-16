@@ -4,6 +4,7 @@ $primary-color: hotpink;
 $background-color: #f0f0f8;
 $text-color: #000020;
 $navbar-height: 30px;
+
 body {
   color: $text-color;
 }
@@ -11,6 +12,7 @@ body {
 div {
   font-family: FontAwesome;
 }
+
 // Mixin
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -41,8 +43,35 @@ div {
   font-size: 25px;
 }
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.avatarThumb {
+  height: 20px;
+  img {
+    float: right;
+    border-radius: 10px;
+    max-height: 20px;
+    max-width: 20px;
+    cursor: pointer;
+  }
+}
+
 .my-other-element {
   @include border-radius(5px);
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
 }
 
 .personalSummaryContainer {
@@ -51,6 +80,15 @@ div {
 
 .mainContentContainer {
 	background: $primary-color;
+}
+
+.dropdown {
+  background-color: $background-color;
+}
+
+.dropdownElement {
+  width: 100%;
+  height: 20px;
 }
 
 .modalGreyout {
@@ -63,6 +101,10 @@ div {
   top: 0;
   right: 0;
   z-index: 10;
+}
+
+.horizontalFill {
+  width: 100%;
 }
 
 .modalContent {
@@ -80,6 +122,9 @@ div {
 .modalNavbar {
   float: right;
   width: 20px;
+  .icon {
+    cursor: pointer;
+  }
 }
 
 .placeholderText {

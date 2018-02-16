@@ -6,6 +6,7 @@ import * as Actions from "../actions/actions";
 import * as AuthActions from "../actions/auth";
 import * as FormActions from "../actions/forms";
 import * as ModalActions from "../actions/modal";
+import * as UIActions from "../actions/ui";
 import Logger from "../utils/logger";
 import * as Store from "../stores/store";
 import { ILoginFormData } from '../stores/store';
@@ -16,6 +17,10 @@ const logger = Logger(path.basename(__filename));
 export interface IForms {
   "login": ILoginFormData;
   "signup": ISignupFormData;
+}
+
+export interface UIState {
+  "preferencesDropdownToggle": boolean;
 }
 
 export interface ISignupFormField {
@@ -39,6 +44,9 @@ export interface ISignupFormData {
   "passwordMatch": boolean;
 }
 
+export const initialUIState = {
+  "preferencesDropdownToggle": false
+}
 const initialSignupFormState = {
   "username": "",
   "email": "",
@@ -133,11 +141,21 @@ function modalReducer (state: ModalTypes = ModalTypes.NONE, action: ModalActions
   return state;
 }
 
+function uiReducer (state: UIState = initialUIState, action: UIActions.UIActions): UIState {
+  switch (action.type) {
+    case UIActions.UIActionTypes.TOGGLE_MENU:
+      return {"preferencesDropdownToggle": action.open};
+  }
+
+  return state;
+}
+
 const statePropertyToReducerMap = {
   modal: (modalReducer as redux.Reducer<ModalTypes>),
   user: (userReducer as redux.Reducer<IUser>),
   auth: (authReducer as redux.Reducer<{}>),
   forms: (formReducer as redux.Reducer<IForms>),
+  ui: (uiReducer as redux.Reducer<UIState>)
 }
 
 export const reducers = combineReducers<Store.IAppState>(statePropertyToReducerMap);
