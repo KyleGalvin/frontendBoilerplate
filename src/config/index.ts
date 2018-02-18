@@ -12,6 +12,7 @@ export interface IConfig {
   "frontendDomain": string;
   "logLevel": string;
   "port": string;
+  "swaggerUrl": string;
 }
 
 var envConfig: IConfig;

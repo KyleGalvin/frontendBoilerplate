@@ -1,13 +1,12 @@
 import * as React from 'react';
-var SwaggerUi = require('swagger-ui');
+import { store } from "../stores/store";
+import * as SwaggerService from "../services/swagger";
+
+
 
 class SwaggerTest extends React.Component {
   componentDidMount() {
-    SwaggerUi({
-      dom_id: '#swaggerContainer',
-      url: `http://localhost:3000/swagger.json`,
-      presets: [SwaggerUi.presets.apis],
-    });
+    SwaggerService.getSpec();
   }
 
   render() {
