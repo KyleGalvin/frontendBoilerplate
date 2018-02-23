@@ -4,7 +4,6 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import * as path from "path";
 
 import Logger from "../utils/logger";
-import Swagger from "../components/swagger";
 import NavBar from "../components/navbar";
 import { IAppState } from "../stores/store";
 import { ModalTypes } from "../reducers/reducer";
@@ -35,7 +34,6 @@ const Component = (props: IStateProps) => {
       <NavBar
         {...props}
       />
-      <Swagger/>
     </Grid>
   );
 };

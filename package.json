@@ -6,10 +6,10 @@
   "scripts": {
     "test": "nyc --extension .ts --extension .tsx mocha -r ts-node/register ./test/*.ts && nyc report --reporter text-lcov --extension .ts --extension .tsx | coveralls",
     "bundle": "webpack && npm run assetBundle",
-    "clean": "rm -rf ./dist",
-    "assetBundle": "cp ./server.js ./dist/ && cp -r ./src/testData ./dist/ && cp ./index.html ./dist && cp -r ./src/images ./dist/ && cp ./src/images/favicon.ico ./dist",
-    "lint": "tslint --force 'src/**/*.ts?' > ./tslint.err",
-    "serve": "npm run clean && npm run lint && npm run bundle && cat ./tslint.err && node ./dist/server.js",
+    "clean": "rimraf ./dist",
+    "assetBundle": "copyfiles ./server.js ./dist/ && copyfiles -r ./src/testData ./dist/ && copyfiles ./index.html ./dist && copyfiles -r ./src/images ./dist/ && copyfiles ./src/images/favicon.ico ./dist",
+    "lint": "tslint --force 'src/**/*.ts?'",
+    "serve": "npm run clean && npm run bundle && npm run lint && node ./dist/server.js",
     "start": "npm run serve"
   },
   "repository": {
@@ -23,11 +23,13 @@
   },
   "homepage": "https://github.com/darkdigitaldream/frontendBoilerplate#readme",
   "devDependencies": {
+    "copyfiles": "^1.2.0",
     "coveralls": "^3.0.0",
     "mocha": "^4.0.1",
     "mocha-lcov-reporter": "^1.3.0",
     "mocha-typescript": "^1.1.12",
-    "nyc": "^11.3.0"
+    "nyc": "^11.3.0",
+    "rimraf": "^2.6.2"
   },
   "dependencies": {
     "@types/browser-bunyan": "^0.4.3",

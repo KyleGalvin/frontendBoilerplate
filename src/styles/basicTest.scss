@@ -128,7 +128,7 @@ div {
 }
 
 .placeholderText {
-  height: calc(100% - 10px - #{$navbar-height});
+  min-height: calc(100% - 10px - #{$navbar-height});
   //line-height: 200px;
   width: 100%;
   text-align: center;
