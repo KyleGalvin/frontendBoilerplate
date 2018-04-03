@@ -7,7 +7,6 @@ const Component: React.SFC<{}> = (props: {}) => {
   return (
     <Col xs={10}>
       <div className={"placeholderText"}>
-        mainPanel
         <Swagger/>
       </div>
     </Col>
