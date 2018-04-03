@@ -47,7 +47,7 @@ const exitClick = () => {
 };
 
 const openAccountDropdown = () => {
-  logger.info("Open Account Dropdown")
+  logger.info("Open Account Dropdown");
 };
 
 const Component = (props: INavBarProps) => {

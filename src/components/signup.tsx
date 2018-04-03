@@ -52,8 +52,6 @@ const submit = (formData: ISignupFormData) => {
     && formData.passwordMatch) {
     store.dispatch(AuthService.signup(formData));
     // Store.dispatch(ModalService.)
-  } else {
-
   }
 };
 
