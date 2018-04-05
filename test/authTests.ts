@@ -21,6 +21,8 @@ import { IState as SignupState } from "../src/components/signup";
     var signupState: SignupState
     var action: actions.ISignupAction = { 
       type: actions.AuthActionTypes.SIGN_UP, 
-      access_token: signupState } 
+      access_token: signupState 
+    }
+    
   }
 }
