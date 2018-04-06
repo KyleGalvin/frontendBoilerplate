@@ -24,7 +24,6 @@ This is a boilerplate launch project meant to accelerate application development
 * React-redux
 * React-router
 * webpack
-* react-flexbox-grid (responsive grid based layouts)
 * sass
 * fetch wrappers (for restful API calls)
 * tslint (with a few rules modified from the defaults)
@@ -37,11 +36,10 @@ This application pairs out of the box with a corresponding backend project hoste
 
 ## Todo:
 
-* Add unit tests
-* Make navbar component stateless
-* Integrate modal component code into the page flow better
+* Fill out more unit tests
 * login/logout redirect to/from dashboard
 * Better HTTP verbs
+* Css layout
 
 ## To install this project:
 
@@ -51,3 +49,6 @@ npm install
 
 npm start
 
+## To run integration tests:
+
+npm test
