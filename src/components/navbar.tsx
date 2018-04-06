@@ -1,7 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import * as path from "path";
-import { Grid, Row, Col } from "react-flexbox-grid";
 
 import Button from "../components/button";
 import Logger from "../utils/logger";
@@ -52,25 +51,25 @@ const openAccountDropdown = () => {
 
 const Component = (props: INavBarProps) => {
   const loggedOut = (
-    <Row end="xs">
-      <Col xs={6}>
+    <div>
+      <div>
         <Button text="Login" onClick={loginClick}/>
-      </Col>
-      <Col xs={6}>
+      </div>
+      <div>
         <Button text="Signup" onClick={signupClick}/>
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 
   const loggedIn = (
-    <Row end="xs">
-      <Col xs={6}>
+    <div>
+      <div>
         <Button text="Logout" onClick={logoutClick}/>
-      </Col>
-      <Col xs={6}>
+      </div>
+      <div>
         <Dropdown image={""} />
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 
   return (
@@ -81,11 +80,11 @@ const Component = (props: INavBarProps) => {
       <Modal isOpen={props.signupModal} onExitClick={exitClick}>
         <Signup {...store.getState().forms.signup}/>
       </Modal>
-      <Row className ="navbar" end="xs">
-        <Col xs={8} sm={4} md={2} lg={1}>
+      <div>
+        <div>
           {props.loggedIn ? loggedIn : loggedOut }
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };

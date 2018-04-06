@@ -1,6 +1,5 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import * as path from "path";
 
 import Logger from "../utils/logger";
@@ -29,12 +28,12 @@ const mapStateToProps = (state: IAppState, props: {}): IStateProps => {
 const Component = (props: IStateProps) => {
   logger.info("LANDING RENDER");
   return (
-    <Grid fluid>
+    <div>
       <NavBar
         {...props}
       />
       <About/>
-    </Grid>
+    </div>
   );
 };
 

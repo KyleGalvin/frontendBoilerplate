@@ -1,12 +1,11 @@
 import * as React from "react";
 import * as path from "path";
-import { Grid, Row, Col } from "react-flexbox-grid";
 
 const Component: React.SFC<{}> = (props: {}) => {
   return (
-    <Row middle-xs={10}>
+    <div>
       <span className={"placeholderText"}>about</span>
-    </Row>
+    </div>
   );
 };
 

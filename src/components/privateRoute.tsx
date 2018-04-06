@@ -11,12 +11,12 @@ const logger = Logger(path.basename(__filename));
 interface IOwnProps {
   component: React.ComponentClass<Pick<IStateProps, never>>;
   path: string;
+  exact?: boolean;
 }
 
 interface IStateProps extends IOwnProps {
   loggedIn: boolean;
-  children?: any;
-  exact?: boolean;
+  children?: any;  
 }
 
 const mapStateToProps = (state: IAppState, ownProps: IOwnProps): IStateProps => {
@@ -42,4 +42,4 @@ const PrivateRouteComponent = (props: IStateProps) => {
   );
 };
 
-export default withRouter(connect(mapStateToProps)(PrivateRouteComponent) as any);
+export default connect(mapStateToProps)(PrivateRouteComponent);

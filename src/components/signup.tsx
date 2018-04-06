@@ -1,11 +1,9 @@
 import * as React from "react";
 import * as redux from "redux";
 import { connect } from "react-redux";
-import { Grid, Row, Col } from "react-flexbox-grid";
 
 import { IAppState, store } from "../stores/store";
 import { ISignupFormData } from "../reducers/reducer";
-
 import SignupField from "../components/signupField";
 import * as AuthService from "../services/auth";
 import * as ModalService from "../services/modal";
@@ -64,7 +62,7 @@ const Component = (props: ISignupFormData) => {
 
   return (
     <form>
-      <Grid fluid>
+      <div>
         <SignupField
           label={"username"}
           name={"username"}
@@ -101,10 +99,10 @@ const Component = (props: ISignupFormData) => {
           type={"password"}
           status={props.passwordMatch}
           onChange={altPasswordChange}/>
-        <Row center="xs" start="md">
+        <div>
           <input type="button" value="Submit" onClick={() => submit(props)}/>
-        </Row>
-      </Grid>
+        </div>
+      </div>
     </form>
   );
 };
