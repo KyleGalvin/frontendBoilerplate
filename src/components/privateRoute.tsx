@@ -16,7 +16,7 @@ interface IOwnProps {
 
 interface IStateProps extends IOwnProps {
   loggedIn: boolean;
-  children?: any;  
+  children?: any;
 }
 
 const mapStateToProps = (state: IAppState, ownProps: IOwnProps): IStateProps => {

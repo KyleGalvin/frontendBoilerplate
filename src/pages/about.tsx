@@ -7,7 +7,6 @@ import { IAppState } from "../stores/store";
 import { ModalTypes } from "../reducers/reducer";
 import NavBar from "../components/navbar";
 import About from "../components/about";
-import * as AuthService from "../services/auth";
 
 const logger = Logger(path.basename(__filename));
 

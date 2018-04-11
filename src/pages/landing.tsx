@@ -7,12 +7,8 @@ import { IAppState } from "../stores/store";
 import { ModalTypes } from "../reducers/reducer";
 import NavBar from "../components/navbar";
 import Landing from "../components/landing";
-import * as AuthService from "../services/auth";
 
 const logger = Logger(path.basename(__filename));
-
-interface IOwnProps {
-}
 
 interface IStateProps {
   "loginModal": boolean;
@@ -20,7 +16,7 @@ interface IStateProps {
   "loggedIn": boolean;
 }
 
-const mapStateToProps = (state: IAppState, props: IOwnProps): IStateProps => {
+const mapStateToProps = (state: IAppState, props: {}): IStateProps => {
   return {
     "loginModal": state.modal === ModalTypes.LOGIN,
     "signupModal": state.modal === ModalTypes.SIGNUP,

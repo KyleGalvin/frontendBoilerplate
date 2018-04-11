@@ -5,6 +5,7 @@ import { combineReducers } from "redux";
 import * as Actions from "../actions/actions";
 import * as AuthActions from "../actions/auth";
 import * as FormActions from "../actions/forms";
+import * as UserActions from "../actions/user";
 import * as ModalActions from "../actions/modal";
 import * as UIActions from "../actions/ui";
 import Logger from "../utils/logger";
@@ -76,7 +77,8 @@ export const initialFormsState = {
   "signup": initialSignupFormState
 }
 
-const initialUserState: IUser = {
+export const initialUserState: IUser = {
+  id: 0,
   firstName: "",
   lastName: "",
   avatar: ""
@@ -85,8 +87,8 @@ const initialUserState: IUser = {
 function userReducer (state: IUser = initialUserState, action: Actions.Action): IUser{
   logger.info({obj:{action: action, state: state}}, 'reducer hit:');
   switch (action.type) {
-    case Actions.ActionTypes.GET_MODEL:
-      logger.info({obj:{action: action, state: state}}, 'reducer GET_MODEL ');
+    case UserActions.UserActionTypes.GET_USER:
+      logger.info({obj:{action: action, state: state}}, 'reducer GET_USER ');
       return (action as Actions.IUserAction).user;
     default:
     logger.info({obj:state}, 'userReducer default ');
@@ -100,10 +102,12 @@ function authReducer (state: {} = {}, action: AuthActions.AuthAction): {} {
     case AuthActions.AuthActionTypes.SIGN_UP:
     case AuthActions.AuthActionTypes.LOG_IN:
       logger.info({obj:{action: action, state: state}}, 'reducer SIGN_UP');
-      window.sessionStorage.accessToken = (action as AuthActions.ISignupAction).access_token;
+      if(window.sessionStorage) //mocha tests run without session storage
+         window.sessionStorage.accessToken = (action as AuthActions.ISignupAction).access_token;
       return (action as AuthActions.ISignupAction).access_token;
     case AuthActions.AuthActionTypes.LOG_OUT:
-      delete window.sessionStorage.accessToken;
+      if(window.sessionStorage)
+        delete window.sessionStorage.accessToken;
       return "";
     default:
     logger.info({obj:state}, 'authReducer default ');

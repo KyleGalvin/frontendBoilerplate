@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as redux from "redux";
 import { connect } from "react-redux";
+import * as jwt from "jsonwebtoken";
 
 import { IAppState, store } from "../stores/store";
 import { ISignupFormData } from "../reducers/reducer";
 import SignupField from "../components/signupField";
-import * as AuthService from "../services/auth";
+import * as UserService from "../services/user";
 import * as ModalService from "../services/modal";
 import * as FormService from "../services/forms";
 
@@ -43,13 +44,16 @@ const passwordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
 const altPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
   store.dispatch(FormService.signupEditAltPassword(event.target.value));
 
-const submit = (formData: ISignupFormData) => {
+const submit = async (formData: ISignupFormData) => {
   if (formData.validUsername
     && formData.validEmail
     && formData.validPassword
     && formData.passwordMatch) {
-    store.dispatch(AuthService.signup(formData));
-    // Store.dispatch(ModalService.)
+    await store.dispatch(UserService.signup(formData));
+    const state = store.getState();
+    const jwtData = (jwt.decode(state.auth)as any);
+    const userId = jwtData.id;
+    store.dispatch(UserService.getUser(userId as string));
   }
 };
 

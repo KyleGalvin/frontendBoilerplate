@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as path from "path";
 
-
 const Component: React.SFC<{}> = (props: {}) => {
   return (
     <div>

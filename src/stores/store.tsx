@@ -16,11 +16,13 @@ export interface IAppState {
   "auth": string;
   "forms": Reducers.IForms;
   "ui": Reducers.UIState;
+  "user": IUser;
 }
 
 export const initialState: IAppState = {
   "modal": Reducers.ModalTypes.NONE,
-  "auth": window.sessionStorage.accessToken || "",
+  "user": Reducers.initialUserState,
+  "auth": window.sessionStorage ? window.sessionStorage.accessToken || "" : "",
   "forms": Reducers.initialFormsState,
   "ui": Reducers.initialUIState
 };

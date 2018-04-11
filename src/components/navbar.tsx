@@ -4,7 +4,7 @@ import * as path from "path";
 
 import Button from "../components/button";
 import Logger from "../utils/logger";
-import * as AuthService from "../services/auth";
+import * as UserService from "../services/user";
 import * as FormService from "../services/forms";
 import * as ModalService from "../services/modal";
 import { IAppState, store } from "../stores/store";
@@ -34,7 +34,7 @@ const signupClick = () => {
 };
 
 const logoutClick = () => {
-  store.dispatch(AuthService.logout());
+  store.dispatch(UserService.logout());
 };
 
 const loginClick = () => {
