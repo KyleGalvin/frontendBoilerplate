@@ -8,7 +8,7 @@
     "clean": "rimraf ./dist",
     "assetBundle": "copyfiles ./server.js ./dist/ && copyfiles -r ./src/testData ./dist/ && copyfiles ./index.html ./dist && copyfiles -r ./src/images ./dist/ && copyfiles ./src/images/favicon.ico ./dist",
     "lint": "tslint --force 'src/**/*.ts?'",
-    "serve": "npm run clean && npm run bundle && npm run lint && node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./dist/server.js",
+    "serve": "npm run clean && npm run bundle && npm run lint && node ./dist/server.js",
     "start": "npm run serve",
     "test": "set NODE_ENV=TEST && nyc --extension .ts --extension .tsx mocha --require ts-node/register --require jsdom-global/register ./test/*.ts && nyc report --reporter text-lcov --extension .ts --extension .tsx | coveralls"
   },
