@@ -19,6 +19,8 @@ var envConfig: IConfig;
 
 if (process.env.NODE_ENV === "DEV") {
     envConfig = herokuDevConfig;
+} else if (process.env.NODE_ENV === "TEST") {
+    envConfig = herokuDevConfig;
 } else {
     envConfig = defaultConfig;
 }
