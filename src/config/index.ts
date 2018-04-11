@@ -16,10 +16,10 @@ export interface IConfig {
 }
 
 var envConfig: IConfig;
-
-if (process.env.NODE_ENV === "DEV") {
+const env = (process.env.NODE_ENV as string).trim();
+if (env === "DEV") {
     envConfig = herokuDevConfig;
-} else if (process.env.NODE_ENV === "TEST") {
+} else if (env === "TEST") {
     envConfig = herokuDevConfig;
 } else {
     envConfig = defaultConfig;
