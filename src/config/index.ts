@@ -1,12 +1,6 @@
 import defaultConfig from "./local";
 import herokuDevConfig from "./herokuDev";
 
-// declare var process : {
-//   env: {
-//     NODE_ENV: string
-//   }
-// }
-
 export interface IConfig {
   "authDomain": string;
   "frontendDomain": string;
