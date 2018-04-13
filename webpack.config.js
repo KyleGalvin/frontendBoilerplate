@@ -14,17 +14,10 @@ if (process.env.NODE_ENV === "DEV") {
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 
-var mode;
-if (process.env) {
-  mode = process.env.NODE_ENV || "development";
-} else {
-  mode = "development";
-}
-
 var config = {
   entry: APP_DIR + '/index.tsx',
   devtool: 'inline-source-map',
-  mode: mode,
+  mode: "development",
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
