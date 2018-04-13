@@ -6,7 +6,7 @@ import MainPanel from "./mainPanel";
 
 const Component: React.SFC<{}> = (props: {}) => {
   return (
-    <div>
+    <div className={"contentContainer"}>
       <LeftPanel />
       <MainPanel />
     </div>

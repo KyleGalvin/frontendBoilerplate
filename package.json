@@ -4,7 +4,7 @@
   "description": "basic blank project setup. Hopefully saves you time configuring",
   "main": "index.js",
   "scripts": {
-    "bundle": "webpack && npm run assetBundle",
+    "bundle": "webpack --hot && npm run assetBundle",
     "clean": "rimraf ./dist",
     "assetBundle": "copyfiles ./server.js ./dist/ && copyfiles -r ./src/testData ./dist/ && copyfiles ./index.html ./dist && copyfiles -r ./src/images ./dist/ && copyfiles ./src/images/favicon.ico ./dist",
     "lint": "tslint --force 'src/**/*.ts?'",

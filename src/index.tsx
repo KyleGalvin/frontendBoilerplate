@@ -16,7 +16,7 @@ import Logger from "./utils/logger";
 
 const logger = Logger(path.basename(__filename));
 
-ReactDOM.render(
+const App = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
@@ -25,6 +25,6 @@ ReactDOM.render(
         <PrivateRoute exact path="/Dashboard" component={Dashboard} />
       </Switch>
     </ConnectedRouter>
-  </Provider>,
-  document.getElementById("reactContainer")
-);
+  </Provider>);
+
+ReactDOM.render(App, document.getElementById("reactContainer"));

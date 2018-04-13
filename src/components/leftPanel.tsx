@@ -3,7 +3,7 @@ import * as path from "path";
 
 const Component: React.SFC<{}> = (props: {}) => {
   return (
-    <div>
+    <div className={"leftPanel"}>
         <div className={"placeholderText"}>
           <div className="accordionContainer">
             <button className="accordion">API Documentation</button>
