@@ -7,12 +7,12 @@ var APP_DIR = path.resolve(__dirname, 'src/');
 var port = 8080;
 var https = true;
 if (process.env.NODE_ENV === "DEV") {
-  port = Number(process.env.PORT);
   https = false;
 }
 
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const CompressionPlugin = require("compression-webpack-plugin");
+if (process.env && process.env.PORT) {
+  port = Number(process.env.PORT);
+}
 
 var mode;
 if (process.env) {
@@ -62,9 +62,7 @@ var config = {
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       },
-    }),
-   // new UglifyJSPlugin(),
-    new CompressionPlugin()
+    }),    
   ]
 };
 
