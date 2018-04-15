@@ -9,7 +9,7 @@ import { IAppState } from "../stores/store";
 const logger = Logger(path.basename(__filename));
 
 interface IOwnProps {
-  component: React.ComponentClass<Pick<IStateProps, never>>;
+  component: React.ComponentClass<Pick<IStateProps, never>> | (() => JSX.Element);
   path: string;
   exact?: boolean;
 }

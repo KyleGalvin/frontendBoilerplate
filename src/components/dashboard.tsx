@@ -4,7 +4,7 @@ import * as path from "path";
 import LeftPanel from "./leftPanel";
 import MainPanel from "./mainPanel";
 
-const Component: React.SFC<{}> = (props: {}) => {
+const Component = () => {
   return (
     <div className={"contentContainer"}>
       <LeftPanel />

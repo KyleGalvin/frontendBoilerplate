@@ -149,10 +149,6 @@ div {
   overflow: hidden;
 }
 
-.horizontalFill {
-  width: 100%;
-}
-
 .modalContent {
   position: absolute;
   background: $background-color;
@@ -176,7 +172,6 @@ div {
 .placeholderText {
   height: calc(100% - 20px - #{$navbar-height});
   overflow-y: auto;
-  width: 100%;
   text-align: center;
   border-style: dashed;
 }

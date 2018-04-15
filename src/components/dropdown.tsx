@@ -27,13 +27,13 @@ const toggleDropdown = () => {
 const Component = (props: IStateProps) => {
   return (
     <div className="relative">
-      <div className={"avatarThumb horizontalFill button"} onClick={toggleDropdown}>
+      <div className={"avatarThumb button"} onClick={toggleDropdown}>
         <div className="fa-chevron-down left"/>
         <img src={props.image ? props.image : (config.frontendDomain + "/images/avatar.jpg")} />
       </div>
       {props.dropdownOpen
           ?
-            <div className="dropdown absolute horizontalFill">
+            <div className="dropdown absolute">
               <div className="dropdownElement">One</div>
               <div className="dropdownElement">Two</div>
               <div className="dropdownElement">Three</div>

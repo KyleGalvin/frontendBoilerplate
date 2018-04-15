@@ -1,10 +1,30 @@
 import * as React from "react";
 import * as path from "path";
+import { connect } from "react-redux";
 
-const Component: React.SFC<{}> = (props: {}) => {
+import NavBar from "../components/navbar";
+import { IAppState } from "../stores/store";
+import { ModalTypes } from "../reducers/reducer";
+
+interface IStateProps {
+  "loginModal": boolean;
+  "signupModal": boolean;
+  "loggedIn": boolean;
+}
+
+const mapStateToProps = (state: IAppState, props: {}): IStateProps => {
+  return {
+    "loginModal": state.modal === ModalTypes.LOGIN,
+    "signupModal": state.modal === ModalTypes.SIGNUP,
+    "loggedIn": state.auth !== ""
+  };
+};
+
+const Component = (props: IStateProps) => {
   return (
     <div className={"leftPanel"}>
         <div className={"placeholderText"}>
+          <NavBar {...props}/>
           <div className="accordionContainer">
             <button className="accordion">API Documentation</button>
             <button className="accordion">Settings</button>
@@ -21,4 +41,4 @@ const Component: React.SFC<{}> = (props: {}) => {
   );
 };
 
-export default Component;
+export default connect(mapStateToProps)(Component);
