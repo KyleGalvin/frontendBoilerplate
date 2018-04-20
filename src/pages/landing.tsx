@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Landing from "../components/landing"
+import Landing from "../components/landing";
 
 const Component = () => {
   return (

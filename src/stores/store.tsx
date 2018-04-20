@@ -15,7 +15,7 @@ export interface IAppState {
   "modal": Reducers.ModalTypes;
   "auth": string;
   "forms": Reducers.IForms;
-  "ui": Reducers.UIState;
+  "ui": Reducers.IUIState;
   "user": IUser;
 }
 
