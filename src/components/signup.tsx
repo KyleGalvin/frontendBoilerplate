@@ -21,6 +21,7 @@ export interface IState {
   "validEmail": boolean;
   "validPassword": boolean;
   "passwordMatch": boolean;
+  "contacts": IState[];
 }
 
 const mapStateToProps = (state: IAppState, props: ISignupFormData): ISignupFormData =>
@@ -49,7 +50,7 @@ const submit = async (formData: ISignupFormData) => {
     && formData.validEmail
     && formData.validPassword
     && formData.passwordMatch) {
-    await store.dispatch(UserService.signup(formData));
+    await store.dispatch(UserService.signup({...formData, ...{contacts: []}}));
     const state = store.getState();
     const jwtData = (jwt.decode(state.auth)as any);
     const userId = jwtData.id;

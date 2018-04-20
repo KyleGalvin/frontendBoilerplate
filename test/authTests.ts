@@ -23,7 +23,8 @@ import * as Store from "../src/stores/store";
       "validUsername": true,
       "validEmail": true,
       "validPassword": true,
-      "passwordMatch": true
+      "passwordMatch": true,
+      "contacts": []
     }
 
     await Store.store.dispatch(userService.signup(signupData));
