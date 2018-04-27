@@ -1,13 +1,32 @@
 import * as React from "react";
 import * as path from "path";
-import { Grid, Row, Col } from "react-flexbox-grid";
 
-const Component: React.SFC<{}> = (props: {}) => {
+import NavBar from "../components/navbar";
+import { IAppState } from "../stores/store";
+import { ModalTypes } from "../reducers/reducer";
+import { connect } from "react-redux";
+
+interface IStateProps {
+  "loginModal": boolean;
+  "signupModal": boolean;
+  "loggedIn": boolean;
+}
+
+const mapStateToProps = (state: IAppState, props: {}): IStateProps => {
+  return {
+    "loginModal": state.modal === ModalTypes.LOGIN,
+    "signupModal": state.modal === ModalTypes.SIGNUP,
+    "loggedIn": state.userData.auth !== ""
+  };
+};
+
+const Component = (props: IStateProps) => {
   return (
-    <Row middle-xs={10}>
-      <span className={"placeholderText"}>landing</span>
-    </Row>
+    <div className={"placeholderText"}>
+      <NavBar {...props} />
+      <span>landing</span>
+    </div>
   );
 };
 
-export default Component;
+export default connect(mapStateToProps)(Component);

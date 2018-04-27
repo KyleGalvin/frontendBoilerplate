@@ -1,12 +1,6 @@
 import defaultConfig from "./local";
 import herokuDevConfig from "./herokuDev";
 
-// declare var process : {
-//   env: {
-//     NODE_ENV: string
-//   }
-// }
-
 export interface IConfig {
   "authDomain": string;
   "frontendDomain": string;
@@ -17,10 +11,13 @@ export interface IConfig {
 
 var envConfig: IConfig;
 
-if (process.env.NODE_ENV === "DEV") {
-    envConfig = herokuDevConfig;
-} else {
-    envConfig = defaultConfig;
+envConfig = defaultConfig;
+
+if(process && process.env && process.env.NODE_ENV) {
+    const env = (process.env.NODE_ENV as string).trim();
+    if (env === "DEV" || env === "TRAVIS") {
+        envConfig = herokuDevConfig;
+    }
 }
 
 export const config = envConfig;

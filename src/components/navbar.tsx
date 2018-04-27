@@ -1,11 +1,10 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import * as path from "path";
-import { Grid, Row, Col } from "react-flexbox-grid";
 
 import Button from "../components/button";
 import Logger from "../utils/logger";
-import * as AuthService from "../services/auth";
+import * as UserService from "../services/user";
 import * as FormService from "../services/forms";
 import * as ModalService from "../services/modal";
 import { IAppState, store } from "../stores/store";
@@ -27,7 +26,7 @@ const mapStateToProps = (state: IAppState, props: INavBarProps): INavBarProps =>
 ({
   "loginModal": state.modal === ModalTypes.LOGIN,
   "signupModal": state.modal === ModalTypes.SIGNUP,
-  "loggedIn": state.auth !== ""
+  "loggedIn": state.userData.auth !== ""
 });
 
 const signupClick = () => {
@@ -35,7 +34,7 @@ const signupClick = () => {
 };
 
 const logoutClick = () => {
-  store.dispatch(AuthService.logout());
+  store.dispatch(UserService.logout());
 };
 
 const loginClick = () => {
@@ -47,30 +46,30 @@ const exitClick = () => {
 };
 
 const openAccountDropdown = () => {
-  logger.info("Open Account Dropdown")
+  logger.info("Open Account Dropdown");
 };
 
 const Component = (props: INavBarProps) => {
   const loggedOut = (
-    <Row end="xs">
-      <Col xs={6}>
+    <div>
+      <div>
         <Button text="Login" onClick={loginClick}/>
-      </Col>
-      <Col xs={6}>
+      </div>
+      <div>
         <Button text="Signup" onClick={signupClick}/>
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 
   const loggedIn = (
-    <Row end="xs">
-      <Col xs={6}>
+    <div>
+      <div>
         <Button text="Logout" onClick={logoutClick}/>
-      </Col>
-      <Col xs={6}>
+      </div>
+      <div>
         <Dropdown image={""} />
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 
   return (
@@ -81,11 +80,11 @@ const Component = (props: INavBarProps) => {
       <Modal isOpen={props.signupModal} onExitClick={exitClick}>
         <Signup {...store.getState().forms.signup}/>
       </Modal>
-      <Row className ="navbar" end="xs">
-        <Col xs={8} sm={4} md={2} lg={1}>
+      <div>
+        <div>
           {props.loggedIn ? loggedIn : loggedOut }
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { createBrowserHistory } from "history";
 import { routerMiddleware } from "react-router-redux";
 
 import * as Reducers from "../reducers/reducer";
+import { IUserSerialized } from "../models/IUserSerialized";
 
 export interface ILoginFormData {
   "username": string;
@@ -13,14 +14,24 @@ export interface ILoginFormData {
 
 export interface IAppState {
   "modal": Reducers.ModalTypes;
-  "auth": string;
   "forms": Reducers.IForms;
-  "ui": Reducers.UIState
+  "ui": Reducers.IUIState;
+  "userData": IUserData;
+}
+
+export interface IUserData {
+  "currentUserId": number;
+  "auth": string;
+  "users": IUserSerialized[];
 }
 
 export const initialState: IAppState = {
   "modal": Reducers.ModalTypes.NONE,
-  "auth": window.sessionStorage.accessToken || "",
+  "userData": {
+    "currentUserId": 0,
+    "auth": window.sessionStorage ? window.sessionStorage.accessToken || "" : "",
+    "users": []
+  },
   "forms": Reducers.initialFormsState,
   "ui": Reducers.initialUIState
 };

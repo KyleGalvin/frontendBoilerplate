@@ -9,21 +9,21 @@ import { IAppState } from "../stores/store";
 const logger = Logger(path.basename(__filename));
 
 interface IOwnProps {
-  component: React.ComponentClass<Pick<IStateProps, never>>;
+  component: React.ComponentClass<Pick<IStateProps, never>> | (() => JSX.Element);
   path: string;
+  exact?: boolean;
 }
 
 interface IStateProps extends IOwnProps {
   loggedIn: boolean;
   children?: any;
-  exact?: boolean;
 }
 
 const mapStateToProps = (state: IAppState, ownProps: IOwnProps): IStateProps => {
   return {
     ...ownProps,
     ... {
-      "loggedIn": state.auth !== ""
+      "loggedIn": state.userData.auth !== ""
     }
   };
 };
@@ -42,4 +42,4 @@ const PrivateRouteComponent = (props: IStateProps) => {
   );
 };
 
-export default withRouter(connect(mapStateToProps)(PrivateRouteComponent) as any);
+export default connect(mapStateToProps)(PrivateRouteComponent);

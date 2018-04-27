@@ -19,6 +19,10 @@ div {
   -moz-border-radius: $radius;
   border-radius: $radius;
 }
+.landing {
+  width: 100%;
+  height: 100%;
+}
 
 .my-element {
   color: $primary-color;
@@ -26,8 +30,27 @@ div {
   overflow: hidden;
 }
 
+.mainPanel {
+  width: 80%;
+  float: left;
+}
+
+.leftPanel {
+  width: 20%;
+  float: left;
+}
+
 .navbar {
   height: $navbar-height;
+}
+
+#swaggerContainer {
+  padding: 10px;
+}
+
+.contentContainer {
+  width: 100%;
+  overflow: hidden;
 }
 
 .button {
@@ -103,8 +126,27 @@ div {
   z-index: 10;
 }
 
-.horizontalFill {
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
   width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
 }
 
 .modalContent {
@@ -128,9 +170,8 @@ div {
 }
 
 .placeholderText {
-  height: calc(100% - 10px - #{$navbar-height});
-  //line-height: 200px;
-  width: 100%;
+  height: calc(100% - 20px - #{$navbar-height});
+  overflow-y: auto;
   text-align: center;
   border-style: dashed;
 }

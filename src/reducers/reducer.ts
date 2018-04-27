@@ -1,16 +1,15 @@
-import * as redux from 'redux'
+import * as redux from "redux";
 import * as path from "path";
-import { combineReducers } from "redux";
 
 import * as Actions from "../actions/actions";
-import * as AuthActions from "../actions/auth";
 import * as FormActions from "../actions/forms";
+import * as UserActions from "../actions/user";
 import * as ModalActions from "../actions/modal";
 import * as UIActions from "../actions/ui";
 import Logger from "../utils/logger";
 import * as Store from "../stores/store";
-import { ILoginFormData } from '../stores/store';
-import { ModalActionTypes } from '../actions/modal';
+import {ILoginFormData, IUserData} from "../stores/store";
+import {ModalActionTypes} from "../actions/modal";
 
 const logger = Logger(path.basename(__filename));
 
@@ -19,7 +18,7 @@ export interface IForms {
   "signup": ISignupFormData;
 }
 
-export interface UIState {
+export interface IUIState {
   "preferencesDropdownToggle": boolean;
 }
 
@@ -46,7 +45,8 @@ export interface ISignupFormData {
 
 export const initialUIState = {
   "preferencesDropdownToggle": false
-}
+};
+
 const initialSignupFormState = {
   "username": "",
   "email": "",
@@ -58,7 +58,7 @@ const initialSignupFormState = {
   "validEmail": false,
   "validPassword": false,
   "passwordMatch": true
-}
+};
 
 export enum ModalTypes {
   LOGIN = "MODAL_LOGIN",
@@ -69,67 +69,91 @@ export enum ModalTypes {
 const initialLoginFormState: ILoginFormData =  {
   "username": "",
   "password": ""
-}
+};
 
 export const initialFormsState = {
   "login": initialLoginFormState,
   "signup": initialSignupFormState
-}
+};
 
-const initialUserState: IUser = {
-  firstName: "",
-  lastName: "",
-  avatar: ""
-}
+export const initialUserState: IUser = {
+  "id": 0,
+  "firstName": "",
+  "lastName": "",
+  "avatar": ""
+};
 
-function userReducer (state: IUser = initialUserState, action: Actions.Action): IUser{
-  logger.info({obj:{action: action, state: state}}, 'reducer hit:');
+export const initialUserDataState: IUserData = {
+  "currentUserId": 0,
+  "auth": window.sessionStorage ? window.sessionStorage.accessToken || "" : "",
+  "users": []
+};
+
+function userReducer(state: IUserData = initialUserDataState, action: UserActions.UserAction): IUserData {
+  logger.info({"obj": {"action": action, "state": state}}, "reducer hit:");
   switch (action.type) {
-    case Actions.ActionTypes.GET_MODEL:
-      logger.info({obj:{action: action, state: state}}, 'reducer GET_MODEL ');
-      return (action as Actions.IUserAction).user;
+    case UserActions.UserActionTypes.SIGN_UP:
+    case UserActions.UserActionTypes.LOG_IN:
+      logger.info({"obj": {"action": action, "state": state}}, "reducer SIGN_UP/LOG_IN");
+      const authToken = (action as UserActions.ISignupAction).authToken;
+      if (window.sessionStorage) {// mocha tests run without session storage
+         window.sessionStorage.accessToken = authToken;
+      }
+      return {
+        ...state,
+        ...{"auth": authToken}
+      };
+    case UserActions.UserActionTypes.LOG_OUT:
+      if (window.sessionStorage) {
+        delete window.sessionStorage.accessToken;
+      }
+      return {
+        ...state,
+        ...{"auth": ""}
+      };
+    case UserActions.UserActionTypes.GET_USER:
+      logger.info({"obj": {"action": action, "state": state}}, "reducer GET_USER");
+      const allUsers = state.users.concat([action.user]);
+      const uniqueUsers = [...new Set(allUsers)];
+      return {
+        ...state,
+        ...{"users": uniqueUsers}
+      };
     default:
-    logger.info({obj:state}, 'userReducer default ');
-      return state;
+    logger.info({"obj": state}, "userReducer default");
+    return state;
   }
 }
 
-function authReducer (state: {} = {}, action: AuthActions.AuthAction): {} {
-  logger.info({obj:{action: action, state: state}}, 'reducer hit:');
+function authReducer(state: {} = {}, action: UserActions.UserAction): {} {
+  logger.info({"obj": {"action": action, "state": state}}, "reducer hit:");
   switch (action.type) {
-    case AuthActions.AuthActionTypes.SIGN_UP:
-    case AuthActions.AuthActionTypes.LOG_IN:
-      logger.info({obj:{action: action, state: state}}, 'reducer SIGN_UP');
-      window.sessionStorage.accessToken = (action as AuthActions.ISignupAction).access_token;
-      return (action as AuthActions.ISignupAction).access_token;
-    case AuthActions.AuthActionTypes.LOG_OUT:
-      delete window.sessionStorage.accessToken;
-      return "";
+
     default:
-    logger.info({obj:state}, 'authReducer default ');
-      return state;
+    logger.info({"obj": state}, "authReducer default ");
+    return state;
   }
 }
 
-function formReducer (state: IForms = initialFormsState, action: FormActions.FormActions): IForms {
-  logger.info({obj:{action: action, state: state}}, 'reducer hit:');
+function formReducer(state: IForms = initialFormsState, action: FormActions.FormActions): IForms {
+  logger.info({"obj": {"action": action, "state": state}}, "reducer hit:");
   switch (action.type) {
-    case FormActions.FormActionTypes.LOGIN_EDIT: 
+    case FormActions.FormActionTypes.LOGIN_EDIT:
       return {
         ...state,
         "login": (action as FormActions.ILoginFormEditAction).data
-      }
-    case FormActions.FormActionTypes.SIGNUP_EDIT: 
+      };
+    case FormActions.FormActionTypes.SIGNUP_EDIT:
       return {
         ...state,
         "signup": (action as FormActions.ISignupFormEditAction).data
-      }
+      };
   }
   return state;
 
 }
 
-function modalReducer (state: ModalTypes = ModalTypes.NONE, action: ModalActions.ModalActions): ModalTypes {
+function modalReducer(state: ModalTypes = ModalTypes.NONE, action: ModalActions.ModalActions): ModalTypes {
   switch (action.type) {
     case ModalActions.ModalActionTypes.LOGIN_MODAL:
       return ModalTypes.LOGIN;
@@ -141,7 +165,7 @@ function modalReducer (state: ModalTypes = ModalTypes.NONE, action: ModalActions
   return state;
 }
 
-function uiReducer (state: UIState = initialUIState, action: UIActions.UIActions): UIState {
+function uiReducer(state: IUIState = initialUIState, action: UIActions.UIActions): IUIState {
   switch (action.type) {
     case UIActions.UIActionTypes.TOGGLE_MENU:
       return {"preferencesDropdownToggle": action.open};
@@ -151,11 +175,10 @@ function uiReducer (state: UIState = initialUIState, action: UIActions.UIActions
 }
 
 const statePropertyToReducerMap = {
-  modal: (modalReducer as redux.Reducer<ModalTypes>),
-  user: (userReducer as redux.Reducer<IUser>),
-  auth: (authReducer as redux.Reducer<{}>),
-  forms: (formReducer as redux.Reducer<IForms>),
-  ui: (uiReducer as redux.Reducer<UIState>)
-}
+  "modal": (modalReducer as redux.Reducer<ModalTypes>),
+  "userData": (userReducer as redux.Reducer<IUserData>),
+  "forms": (formReducer as redux.Reducer<IForms>),
+  "ui": (uiReducer as redux.Reducer<IUIState>)
+};
 
-export const reducers = combineReducers<Store.IAppState>(statePropertyToReducerMap);
+export const reducers = redux.combineReducers<Store.IAppState>(statePropertyToReducerMap);

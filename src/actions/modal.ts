@@ -4,11 +4,11 @@ export enum ModalActionTypes {
   CLOSE_MODAL = "MODAL_CLOSE"
 }
 
-export interface ISignupModalAction { type: ModalActionTypes.SIGNUP_MODAL } 
-export interface ILoginModalAction { type: ModalActionTypes.LOGIN_MODAL } 
-export interface ICloseModalAction { type: ModalActionTypes.CLOSE_MODAL } 
+export interface ISignupModalAction { type: ModalActionTypes.SIGNUP_MODAL; }
+export interface ILoginModalAction { type: ModalActionTypes.LOGIN_MODAL; }
+export interface ICloseModalAction { type: ModalActionTypes.CLOSE_MODAL; }
 
-export type ModalActions = 
+export type ModalActions =
   ISignupModalAction
 | ILoginModalAction
-| ICloseModalAction
+| ICloseModalAction;

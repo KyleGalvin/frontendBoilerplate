@@ -5,7 +5,7 @@ import { push } from "react-router-redux";
 
 import Logger from "../utils/logger";
 import { IAppState, store, ILoginFormData } from "../stores/store";
-import * as AuthService from "../services/auth";
+import * as UserService from "../services/user";
 import * as FormService from "../services/forms";
 import * as ModalService from "../services/modal";
 
@@ -21,9 +21,9 @@ const passwordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
   store.dispatch(FormService.loginEditPassword(event.target.value));
 
 const submit = async (formData: ILoginFormData) => {
-  await store.dispatch(AuthService.login(formData));
+  await store.dispatch(UserService.login(formData));
   const state = store.getState();
-  if (state.auth !== "") {
+  if (state.userData.auth !== "") {
     await store.dispatch(ModalService.closeModal());
     await store.dispatch(push("/Dashboard"));
   } else {

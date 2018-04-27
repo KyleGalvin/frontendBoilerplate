@@ -1,13 +1,12 @@
 import * as React from "react";
 import * as redux from "redux";
 import { connect } from "react-redux";
-import { Grid, Row, Col } from "react-flexbox-grid";
+import * as jwt from "jsonwebtoken";
 
 import { IAppState, store } from "../stores/store";
 import { ISignupFormData } from "../reducers/reducer";
-
 import SignupField from "../components/signupField";
-import * as AuthService from "../services/auth";
+import * as UserService from "../services/user";
 import * as ModalService from "../services/modal";
 import * as FormService from "../services/forms";
 
@@ -22,6 +21,7 @@ export interface IState {
   "validEmail": boolean;
   "validPassword": boolean;
   "passwordMatch": boolean;
+  "contacts": IState[];
 }
 
 const mapStateToProps = (state: IAppState, props: ISignupFormData): ISignupFormData =>
@@ -45,15 +45,16 @@ const passwordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
 const altPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
   store.dispatch(FormService.signupEditAltPassword(event.target.value));
 
-const submit = (formData: ISignupFormData) => {
+const submit = async (formData: ISignupFormData) => {
   if (formData.validUsername
     && formData.validEmail
     && formData.validPassword
     && formData.passwordMatch) {
-    store.dispatch(AuthService.signup(formData));
-    // Store.dispatch(ModalService.)
-  } else {
-
+    await store.dispatch(UserService.signup({...formData, ...{"contacts": []}}));
+    const state = store.getState();
+    const jwtData = (jwt.decode(state.userData.auth)as any);
+    const userId = jwtData.id;
+    store.dispatch(UserService.getUser(userId as string));
   }
 };
 
@@ -66,7 +67,7 @@ const Component = (props: ISignupFormData) => {
 
   return (
     <form>
-      <Grid fluid>
+      <div>
         <SignupField
           label={"username"}
           name={"username"}
@@ -103,10 +104,10 @@ const Component = (props: ISignupFormData) => {
           type={"password"}
           status={props.passwordMatch}
           onChange={altPasswordChange}/>
-        <Row center="xs" start="md">
+        <div>
           <input type="button" value="Submit" onClick={() => submit(props)}/>
-        </Row>
-      </Grid>
+        </div>
+      </div>
     </form>
   );
 };

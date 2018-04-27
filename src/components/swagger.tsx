@@ -1,15 +1,13 @@
-import * as React from 'react';
+import * as React from "react";
 import { store } from "../stores/store";
 import * as SwaggerService from "../services/swagger";
 
-
-
 class SwaggerTest extends React.Component {
-  componentDidMount() {
+  public componentDidMount() {
     SwaggerService.getSpec();
   }
 
-  render() {
+  public render() {
     return (
       <div id="swaggerContainer" />
     );
