@@ -17,6 +17,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 var config = {
   entry: APP_DIR + '/index.tsx',
   devtool: 'inline-source-map',
+  mode: "development",
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
@@ -26,29 +27,14 @@ var config = {
       extensions: [".ts", ".tsx", ".js", ".json", ".css"]
   },
   module: {
-    loaders: [
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader',
-        include: /flexboxgrid/
-      },
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader" },
+    rules: [
+      { test: /\.tsx?$/, use: ["awesome-typescript-loader"]},
+      { enforce: "pre", test: /\.js$/, use: ["source-map-loader"] },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: ["file-loader"] },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: ["url-loader"] },
       {
         test: /\.(css|scss)$/, exclude: /node_modules/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader"
-          },
-          {
-            loader: "sass-loader"
-          }
-        ]
+        use: ["style-loader","css-loader","sass-loader"]
       }
     ]
   },
