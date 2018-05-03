@@ -7,6 +7,7 @@ import { ConnectedRouter } from "react-router-redux";
 
 import {store, history} from "./stores/store";
 import LandingPage from "./pages/landing";
+import NotFoundPage from "./pages/notFound";
 import AboutPage from "./pages/about";
 import PrivateRoute from "./components/privateRoute";
 import Dashboard from "./pages/dashboard";
@@ -23,6 +24,7 @@ const App = (
         <Route exact path="/" component={LandingPage as any}/>
         <Route exact path="/About" component={AboutPage}/>
         <PrivateRoute exact path="/Dashboard" component={Dashboard} />
+        <PrivateRoute path="/*" component={NotFoundPage as any} />
       </Switch>
     </ConnectedRouter>
   </Provider>);
