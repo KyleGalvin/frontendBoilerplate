@@ -52,10 +52,10 @@ const openAccountDropdown = () => {
 const Component = (props: INavBarProps) => {
   const loggedOut = (
     <div>
-      <div>
+      <div className={"width50 floatLeft"}>
         <Button text="Login" onClick={loginClick}/>
       </div>
-      <div>
+      <div className={"width50 floatRight"}>
         <Button text="Signup" onClick={signupClick}/>
       </div>
     </div>
@@ -63,10 +63,10 @@ const Component = (props: INavBarProps) => {
 
   const loggedIn = (
     <div>
-      <div>
+      <div className={"width50 floatLeft"}>
         <Button text="Logout" onClick={logoutClick}/>
       </div>
-      <div>
+      <div className={"width50 floatRight"}>
         <Dropdown image={""} />
       </div>
     </div>

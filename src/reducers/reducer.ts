@@ -20,6 +20,16 @@ export interface IForms {
 
 export interface IUIState {
   "preferencesDropdownToggle": boolean;
+  "leftPanel": ILeftPanelState;
+}
+
+export interface ILeftPanelState {
+  "selectedWidget": number;
+  "widgets": ILeftPanelWidget[];
+}
+
+export interface ILeftPanelWidget {
+  "name": string;
 }
 
 export interface ISignupFormField {
@@ -43,11 +53,28 @@ export interface ISignupFormData {
   "passwordMatch": boolean;
 }
 
-export const initialUIState = {
-  "preferencesDropdownToggle": false
+export const initialUIState: IUIState = {
+  "preferencesDropdownToggle": false,
+  "leftPanel": {
+    "selectedWidget": 0,
+    "widgets": [
+      {
+        "name": "Dashboard"
+      },
+      {
+        "name": "API"
+      },
+      {
+        "name": "Contacts"
+      },
+      {
+        "name": "UserDiscovery"
+      }
+    ]
+  }
 };
 
-const initialSignupFormState = {
+const initialSignupFormState: ISignupFormData = {
   "username": "",
   "email": "",
   "firstName": "",
@@ -168,7 +195,11 @@ function modalReducer(state: ModalTypes = ModalTypes.NONE, action: ModalActions.
 function uiReducer(state: IUIState = initialUIState, action: UIActions.UIActions): IUIState {
   switch (action.type) {
     case UIActions.UIActionTypes.TOGGLE_MENU:
-      return {"preferencesDropdownToggle": action.open};
+      const toggledState = {
+        ...state,
+        ...{"preferencesDropdownToggle": action.open}
+      };
+      return toggledState;
   }
 
   return state;

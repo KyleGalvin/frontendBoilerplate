@@ -24,6 +24,18 @@ div {
   height: 100%;
 }
 
+.width50 {
+  width: 50%;
+}
+
+.floatRight {
+  float: right;
+}
+
+.floatLeft {
+  float: left;
+}
+
 .my-element {
   color: $primary-color;
   width: 100%;
@@ -32,11 +44,13 @@ div {
 
 .mainPanel {
   width: 80%;
+  min-width: calc(100% - 200px);
   float: left;
 }
 
 .leftPanel {
   width: 20%;
+  max-width: 200px;
   float: left;
 }
 
