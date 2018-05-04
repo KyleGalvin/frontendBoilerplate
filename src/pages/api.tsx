@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as path from "path";
 
-import Dashboard from "../components/dashboard";
+import Api from "../components/api";
 
 const Component = () => {
   return (
-    <Dashboard/>
+    <Api/>
   );
 };
 

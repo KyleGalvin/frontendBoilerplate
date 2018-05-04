@@ -10,7 +10,8 @@ import LandingPage from "./pages/landing";
 import NotFoundPage from "./pages/notFound";
 import AboutPage from "./pages/about";
 import PrivateRoute from "./components/privateRoute";
-import Dashboard from "./pages/dashboard";
+import Api from "./pages/api";
+import UserDiscovery from "./pages/userDiscovery";
 import "./styles/basicTest.scss";
 import "./styles/swagger-ui.css";
 import Logger from "./utils/logger";
@@ -23,7 +24,8 @@ const App = (
       <Switch>
         <Route exact path="/" component={LandingPage as any}/>
         <Route exact path="/About" component={AboutPage}/>
-        <PrivateRoute exact path="/Dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/Api" component={Api} />
+        <PrivateRoute exact path="/UserDiscovery" component={UserDiscovery} />
         <PrivateRoute path="/*" component={NotFoundPage as any} />
       </Switch>
     </ConnectedRouter>

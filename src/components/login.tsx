@@ -25,7 +25,7 @@ const submit = async (formData: ILoginFormData) => {
   const state = store.getState();
   if (state.userData.auth !== "") {
     await store.dispatch(ModalService.closeModal());
-    await store.dispatch(push("/Dashboard"));
+    await store.dispatch(push("/Api"));
   } else {
     logger.info("Login failed!");
   }
