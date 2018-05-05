@@ -3,6 +3,7 @@
 $primary-color: hotpink;
 $background-color: #f0f0f8;
 $text-color: #000020;
+$light-text-color: #777797;
 $navbar-height: 30px;
 
 body {
@@ -24,8 +25,37 @@ div {
   height: 100%;
 }
 
+.width75 {
+  width: 75%;
+}
+
+.width25 {
+  width: 25%;
+}
+
 .width50 {
   width: 50%;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.contactCard {
+  text-align: left;
+  float: left;
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.title {
+  font-size: 10px;
+}
+
+.subtitle {
+  font-size: 10px;
+  color: $light-text-color; 
 }
 
 .floatRight {
