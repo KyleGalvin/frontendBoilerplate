@@ -21,3 +21,4 @@ interface IUserCreationResponse {
 }
 
 declare module "swagger-ui";
+declare module "graphiql";

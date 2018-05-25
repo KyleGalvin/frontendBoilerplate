@@ -62,13 +62,16 @@ export const initialUIState: IUIState = {
         "name": "Dashboard"
       },
       {
-        "name": "API"
+        "name": "Swagger"
       },
       {
         "name": "Contacts"
       },
       {
         "name": "UserDiscovery"
+      },
+      {
+        "name": "Graphiql"
       }
     ]
   }

@@ -217,6 +217,5 @@ div {
 .placeholderText {
   height: calc(100% - 20px - #{$navbar-height});
   overflow-y: auto;
-  text-align: center;
   border-style: dashed;
 }

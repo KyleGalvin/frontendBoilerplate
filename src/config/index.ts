@@ -7,13 +7,14 @@ export interface IConfig {
   "logLevel": string;
   "port": string;
   "swaggerUrl": string;
+  "graphqlUrl": string;
 }
 
-var envConfig: IConfig;
+let envConfig: IConfig;
 
 envConfig = defaultConfig;
 
-if(process && process.env && process.env.NODE_ENV) {
+if (process && process.env && process.env.NODE_ENV) {
     const env = (process.env.NODE_ENV as string).trim();
     if (env === "DEV" || env === "TRAVIS") {
         envConfig = herokuDevConfig;
