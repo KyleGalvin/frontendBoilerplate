@@ -28,33 +28,33 @@ const mapStateToProps = (state: IAppState, props: ISignupFormData): ISignupFormD
   state.forms.signup;
 
 const usernameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  store.dispatch(FormService.signupEditUsername(event.target.value));
+  FormService.signupEditUsername(event.target.value);
 
 const firstNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  store.dispatch(FormService.signupEditFirstName(event.target.value));
+  FormService.signupEditFirstName(event.target.value);
 
 const lastNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  store.dispatch(FormService.signupEditLastName(event.target.value));
+  FormService.signupEditLastName(event.target.value);
 
 const emailChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  store.dispatch(FormService.signupEditEmail(event.target.value));
+  FormService.signupEditEmail(event.target.value);
 
 const passwordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  store.dispatch(FormService.signupEditPassword(event.target.value));
+  FormService.signupEditPassword(event.target.value);
 
 const altPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  store.dispatch(FormService.signupEditAltPassword(event.target.value));
+  FormService.signupEditAltPassword(event.target.value);
 
 const submit = async (formData: ISignupFormData) => {
   if (formData.validUsername
     && formData.validEmail
     && formData.validPassword
     && formData.passwordMatch) {
-    await store.dispatch(UserService.signup({...formData, ...{"contacts": []}}));
+    await UserService.signup({...formData, ...{"contacts": []}});
     const state = store.getState();
     const jwtData = (jwt.decode(state.userData.auth)as any);
     const userId = jwtData.id;
-    store.dispatch(UserService.getUser(userId as string));
+    await UserService.getUser(userId as string);
   }
 };
 

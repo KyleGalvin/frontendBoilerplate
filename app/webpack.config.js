@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var path = require('path');
 
 var BUILD_DIR = path.resolve(__dirname, '../dist/');
-var APP_DIR = path.resolve(__dirname, 'src/');
 
 var port = 8080;
 var https = true;
@@ -15,7 +14,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 
 var config = {
-  entry: APP_DIR + '/index.tsx',
+  entry: path.resolve(__dirname, './src/index.tsx'),
   devtool: 'inline-source-map',
   mode: "development",
   output: {
@@ -23,7 +22,6 @@ var config = {
     filename: 'bundle.js'
   },
   resolve: {
-      // Add '.ts' and '.tsx' as resolvable extensions.
       extensions: [".ts", ".tsx", ".js", ".json", ".css"]
   },
   module: {

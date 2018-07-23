@@ -15,16 +15,16 @@ const mapStateToProps = (state: IAppState, props: ILoginFormData): ILoginFormDat
   state.forms.login;
 
 const usernameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  store.dispatch(FormService.loginEditUsername(event.target.value));
+  FormService.loginEditUsername(event.target.value);
 
 const passwordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-  store.dispatch(FormService.loginEditPassword(event.target.value));
+  FormService.loginEditPassword(event.target.value);
 
 const submit = async (formData: ILoginFormData) => {
-  await store.dispatch(UserService.login(formData));
+  await UserService.login(formData);
   const state = store.getState();
   if (state.userData.auth !== "") {
-    await store.dispatch(ModalService.closeModal());
+    await ModalService.closeModal();
     await store.dispatch(push("/Api"));
   } else {
     logger.info("Login failed!");

@@ -25,14 +25,14 @@ import * as Store from "../src/stores/store";
       "contacts": []
     };
 
-    await Store.store.dispatch(userService.signup(signupData));
+    await userService.signup(signupData);
     const signupState = Store.store.getState();
 
     const jwtData = jwt.decode(Store.store.getState().userData.auth) as any;
-    await Store.store.dispatch(userService.getUser(jwtData.id));
+    await userService.getUser(jwtData.id);
     const newUser = Store.store.getState().userData.users[0];
 
-    await Store.store.dispatch(userService.del(newUser));
+    await userService.del(newUser);
     const deletedUser = Store.store.getState().userData.users[0];
 
     assert.equal("first", newUser.firstName);

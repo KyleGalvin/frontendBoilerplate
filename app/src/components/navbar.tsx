@@ -30,19 +30,19 @@ const mapStateToProps = (state: IAppState, props: INavBarProps): INavBarProps =>
 });
 
 const signupClick = () => {
-  store.dispatch(ModalService.openSignupModal());
+  ModalService.openSignupModal();
 };
 
 const logoutClick = () => {
-  store.dispatch(UserService.logout());
+  UserService.logout();
 };
 
 const loginClick = () => {
-  store.dispatch(ModalService.openLoginModal());
+  ModalService.openLoginModal();
 };
 
 const exitClick = () => {
-  store.dispatch(ModalService.closeModal());
+  ModalService.closeModal();
 };
 
 const openAccountDropdown = () => {

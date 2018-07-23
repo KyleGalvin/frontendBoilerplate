@@ -1,7 +1,0 @@
-dist/
-node_modules/
-tslint.err
-npm-debug.log
-package-lock.json
-.nyc_output/*
-stats.json

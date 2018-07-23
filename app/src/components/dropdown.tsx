@@ -21,7 +21,7 @@ const mapStateToProps = (state: IAppState, props: IOwnProps): IStateProps => {
 };
 
 const toggleDropdown = () => {
-  store.dispatch(UIService.toggleMenu());
+  UIService.toggleMenu();
 };
 
 const Component = (props: IStateProps) => {
