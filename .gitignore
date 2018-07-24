@@ -6,4 +6,3 @@ app/nyc_output/*
 stats.json
 package-lock.json
 .travis.yml
-README.md
