@@ -14,7 +14,9 @@
     "run-node": "node ./dist/server.js",
     "serve": "npm run clean && npm run lint && npm run bundle && npm run build && npm run run-node",
     "start": "npm run serve",
-    "test": "set NODE_ENV=TEST && nyc --extension .ts --extension .tsx mocha --require ts-node/register --require jsdom-global/register ./test/*.ts && nyc report --reporter text-lcov --extension .ts --extension .tsx | coveralls"
+    "test": "set NODE_ENV=TEST && nyc --extension .ts --extension .tsx mocha --require ts-node/register --require jsdom-global/register ./test/*.ts && nyc report --reporter text-lcov --extension .ts --extension .tsx | coveralls",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -83,6 +85,8 @@
     "uglifyjs-webpack-plugin": "^1.1.4",
     "url-loader": "^1.0.1",
     "webpack": "^4.5.0",
-    "webpack-merge": "^4.1.2"
-  }
+    "webpack-merge": "^4.1.2",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
