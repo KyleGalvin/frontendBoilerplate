@@ -75,7 +75,7 @@
     "redux": "3.7.2",
     "redux-devtools-extension": "^2.13.5",
     "redux-thunk": "2.2.0",
-    "sass-loader": "^6.0.6",
+    "sass-loader": "^7.2.0",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.20.3",
     "swagger-ui": "^3.10.0",
