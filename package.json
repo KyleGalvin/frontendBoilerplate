@@ -79,7 +79,7 @@
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.20.3",
     "swagger-ui": "^3.10.0",
-    "ts-node": "^5.0.1",
+    "ts-node": "^8.0.0",
     "uglifyjs-webpack-plugin": "^1.1.4",
     "url-loader": "^1.0.1",
     "webpack": "^4.5.0",
